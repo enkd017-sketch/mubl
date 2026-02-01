@@ -12,11 +12,11 @@ import {
   UserPlus,
   Handshake,
   Mail,
-  Github,
-  Youtube,
-  Twitter,
+  Linkedin,
+  Globe,
   PanelLeftClose,
-  PanelLeft
+  PanelLeft,
+  Send
 } from "lucide-react";
 import {
   Sidebar,
@@ -53,6 +53,24 @@ const actionItems = [
   { title: "Email Us", url: "mailto:mubl@newuu.uz", icon: Mail, external: true },
 ];
 
+const socialLinks = [
+  { 
+    name: "Telegram", 
+    url: "https://t.me/marvelousacosmos", 
+    icon: Send 
+  },
+  { 
+    name: "LinkedIn", 
+    url: "https://www.linkedin.com/company/mirzo-ulugh-beg-s-legacy/", 
+    icon: Linkedin 
+  },
+  { 
+    name: "Website", 
+    url: "https://mubl.uz", 
+    icon: Globe 
+  },
+];
+
 export function AppSidebar() {
   const location = useLocation();
   const { state, toggleSidebar } = useSidebar();
@@ -66,21 +84,39 @@ export function AppSidebar() {
       className="border-r border-sidebar-border bg-sidebar"
     >
       <SidebarHeader className="p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col">
+          <div className="flex items-center gap-2">
             <img 
               src={mublWhiteLogo} 
               alt="MUBL" 
               className={`transition-all duration-200 ${isCollapsed ? "h-6 w-auto" : "h-10 w-auto"}`}
             />
             {!isCollapsed && (
-              <div className="flex flex-col">
-                <span className="text-xs text-sidebar-foreground/60">
-                  Mirzo Ulugh Beg's Legacy
-                </span>
-              </div>
+              <Button 
+                variant="ghost" 
+                size="icon"
+                onClick={toggleSidebar}
+                className="ml-auto text-sidebar-foreground hover:bg-sidebar-accent h-8 w-8"
+              >
+                <PanelLeftClose className="h-4 w-4" />
+              </Button>
+            )}
+            {isCollapsed && (
+              <Button 
+                variant="ghost" 
+                size="icon"
+                onClick={toggleSidebar}
+                className="text-sidebar-foreground hover:bg-sidebar-accent h-6 w-6"
+              >
+                <PanelLeft className="h-3 w-3" />
+              </Button>
             )}
           </div>
+          {!isCollapsed && (
+            <span className="text-xs text-sidebar-foreground/60 mt-1">
+              Mirzo Ulugh Beg's Legacy
+            </span>
+          )}
         </div>
       </SidebarHeader>
 
@@ -160,30 +196,18 @@ export function AppSidebar() {
         {/* Social Links */}
         {!isCollapsed && (
           <div className="flex items-center justify-center gap-2 mb-3">
-            <a 
-              href="https://github.com/mubl" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-sidebar-accent/50 text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
-            >
-              <Github className="h-4 w-4" />
-            </a>
-            <a 
-              href="https://youtube.com/@mubl" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-sidebar-accent/50 text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
-            >
-              <Youtube className="h-4 w-4" />
-            </a>
-            <a 
-              href="https://twitter.com/mubl" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-sidebar-accent/50 text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
-            >
-              <Twitter className="h-4 w-4" />
-            </a>
+            {socialLinks.map((social) => (
+              <a 
+                key={social.name}
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-sidebar-accent/50 text-sidebar-foreground hover:bg-sidebar-accent transition-colors"
+                title={social.name}
+              >
+                <social.icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
         )}
 
@@ -198,20 +222,6 @@ export function AppSidebar() {
             </a>
           </Button>
         )}
-
-        {/* Collapse Toggle */}
-        <Button 
-          variant="ghost" 
-          size="icon"
-          onClick={toggleSidebar}
-          className="mt-2 mx-auto text-sidebar-foreground hover:bg-sidebar-accent"
-        >
-          {isCollapsed ? (
-            <PanelLeft className="h-4 w-4" />
-          ) : (
-            <PanelLeftClose className="h-4 w-4" />
-          )}
-        </Button>
       </SidebarFooter>
     </Sidebar>
   );

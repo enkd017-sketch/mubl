@@ -1,4 +1,4 @@
-import { Calendar as CalendarIcon, MapPin, Users, ArrowRight, Calendar } from "lucide-react";
+import { Calendar as CalendarIcon, MapPin, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 
@@ -41,14 +41,6 @@ export default function Events() {
   return (
     <Layout>
       <div className="min-h-screen bg-background">
-        {/* Breadcrumb */}
-        <div className="px-6 py-4 border-b border-border">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Calendar className="h-4 w-4" />
-            <span>Events</span>
-          </div>
-        </div>
-
         <div className="px-6 py-12">
           {/* Section Header */}
           <div className="max-w-4xl mb-16">

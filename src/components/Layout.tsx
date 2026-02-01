@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
-import spaceBg from "@/assets/space-bg.jpg";
+import homeBg from "@/assets/home-bg.jpg";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ export function Layout({ children, showBackground = false }: LayoutProps) {
           {showBackground && (
             <div 
               className="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
-              style={{ backgroundImage: `url(${spaceBg})` }}
+              style={{ backgroundImage: `url(${homeBg})` }}
             />
           )}
           <main className={showBackground ? "relative z-10" : ""}>

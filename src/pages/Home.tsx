@@ -1,4 +1,4 @@
-import { ArrowRight, Rocket, Users, Trophy, Home as HomeIcon } from "lucide-react";
+import { ArrowRight, Rocket, Users, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
@@ -18,13 +18,6 @@ export default function Home() {
   return (
     <Layout showBackground>
       <div className="min-h-screen">
-        {/* Breadcrumb */}
-        <div className="px-6 py-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <HomeIcon className="h-4 w-4" />
-            <span>Home</span>
-          </div>
-        </div>
 
         {/* Hero Section */}
         <section className="px-6 py-12 lg:py-20">

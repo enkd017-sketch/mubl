@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, Users, Handshake, ExternalLink, MessageCircle } from "lucide-react";
+import { ArrowRight, Users, Handshake, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
@@ -30,14 +30,6 @@ export default function Connect() {
   return (
     <Layout>
       <div className="min-h-screen bg-background">
-        {/* Breadcrumb */}
-        <div className="px-6 py-4 border-b border-border">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <MessageCircle className="h-4 w-4" />
-            <span>Connect</span>
-          </div>
-        </div>
-
         <div className="px-6 py-12">
           {/* Section Header */}
           <div className="max-w-4xl mb-16">

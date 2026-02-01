@@ -1,4 +1,4 @@
-import { Calendar, User, ArrowRight, BookOpen, PenTool } from "lucide-react";
+import { Calendar, User, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 
@@ -52,14 +52,6 @@ export default function Blog() {
   return (
     <Layout>
       <div className="min-h-screen bg-background">
-        {/* Breadcrumb */}
-        <div className="px-6 py-4 border-b border-border">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <BookOpen className="h-4 w-4" />
-            <span>Blog</span>
-          </div>
-        </div>
-
         <div className="px-6 py-12">
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 max-w-5xl">
