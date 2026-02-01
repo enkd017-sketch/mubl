@@ -12,7 +12,7 @@ export function Layout({ children, showBackground = false }: LayoutProps) {
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full">
         <AppSidebar />
-        <SidebarInset className="flex-1 overflow-auto">
+        <SidebarInset className={`flex-1 overflow-auto ${showBackground ? "!bg-transparent" : ""}`}>
           {showBackground && (
             <div 
               className="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
