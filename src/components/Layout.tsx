@@ -1,5 +1,6 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { MobileHeader } from "@/components/MobileHeader";
 import homeBg from "@/assets/home-bg.jpg";
 
 interface LayoutProps {
@@ -12,6 +13,7 @@ export function Layout({ children, showBackground = false }: LayoutProps) {
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full">
         <AppSidebar />
+        <MobileHeader />
         <SidebarInset className={`flex-1 overflow-auto ${showBackground ? "!bg-transparent" : ""}`}>
           {showBackground && (
             <div 
@@ -19,7 +21,7 @@ export function Layout({ children, showBackground = false }: LayoutProps) {
               style={{ backgroundImage: `url(${homeBg})` }}
             />
           )}
-          <main className={showBackground ? "relative z-10" : ""}>
+          <main className={`${showBackground ? "relative z-10" : ""} pt-16 md:pt-0`}>
             {children}
           </main>
         </SidebarInset>

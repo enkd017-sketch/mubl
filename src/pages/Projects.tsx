@@ -1,30 +1,30 @@
 import { Satellite, Bot, Brain, Boxes } from "lucide-react";
 import { Layout } from "@/components/Layout";
 
-const projects = [
+const projectAreas = [
   {
     icon: Satellite,
     title: "CanSat Systems",
-    description: "Design and build miniature satellites for atmospheric research and space technology competitions.",
-    tags: ["Aerospace", "Sensors", "Telemetry"],
+    description: "Design and build miniature satellites for atmospheric research and space technology competitions. Our CanSat team has won multiple national competitions.",
+    tags: ["Aerospace", "Sensors", "Telemetry", "Data Analysis"],
   },
   {
     icon: Bot,
     title: "Robotics & Autonomous Systems",
-    description: "Create intelligent robots and autonomous vehicles for various applications and competitions.",
-    tags: ["Hardware", "Control Systems", "IoT"],
+    description: "Create intelligent robots and autonomous vehicles for various applications. We work on everything from agricultural robots to competition-ready autonomous systems.",
+    tags: ["Hardware", "Control Systems", "IoT", "Embedded"],
   },
   {
     icon: Brain,
-    title: "AI-Driven Solutions",
-    description: "Develop machine learning models and AI applications to solve real engineering challenges.",
-    tags: ["Machine Learning", "Computer Vision", "NLP"],
+    title: "AI-Driven Engineering Solutions",
+    description: "Develop machine learning models and AI applications to solve real engineering challenges, from computer vision for agriculture to predictive maintenance systems.",
+    tags: ["Machine Learning", "Computer Vision", "NLP", "Deep Learning"],
   },
   {
     icon: Boxes,
-    title: "3D Design & CAD",
-    description: "Master 3D modeling and CAD-based hardware development for prototyping and manufacturing.",
-    tags: ["CAD", "3D Printing", "Prototyping"],
+    title: "3D Design & CAD-Based Development",
+    description: "Master 3D modeling and CAD-based hardware development for rapid prototyping and manufacturing. We design, print, and iterate on physical components.",
+    tags: ["CAD", "3D Printing", "Prototyping", "Manufacturing"],
   },
 ];
 
@@ -39,15 +39,23 @@ export default function Projects() {
               What We{" "}
               <span className="text-primary">Build</span>
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               At MUBL, projects are the heart of everything we do. Members work on hardware 
-              and software systems across multiple domains.
+              and software systems across multiple domains, including aerospace, robotics, 
+              agriculture, and AI.
             </p>
+          </div>
+
+          {/* Key Project Areas Header */}
+          <div className="max-w-5xl mb-8">
+            <h2 className="text-xl font-semibold text-foreground">
+              Key Project Areas
+            </h2>
           </div>
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-            {projects.map((project, index) => (
+            {projectAreas.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))}
           </div>
@@ -70,14 +78,14 @@ function ProjectCard({ icon: Icon, title, description, tags }: {
       
       <div className="p-6 md:p-8">
         <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center">
+          <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
             <Icon className="h-7 w-7 text-primary" />
           </div>
           <div className="flex-1">
             <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
               {title}
             </h3>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
+            <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
               {description}
             </p>
             <div className="flex flex-wrap gap-2">
