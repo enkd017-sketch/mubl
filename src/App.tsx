@@ -10,7 +10,6 @@ import Events from "./pages/Events";
 import Achievements from "./pages/Achievements";
 import Blog from "./pages/Blog";
 import Resources from "./pages/Resources";
-import Members from "./pages/Members";
 import Connect from "./pages/Connect";
 import Join from "./pages/Join";
 import Partner from "./pages/Partner";
@@ -32,7 +31,6 @@ const App = () => (
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/resources" element={<Resources />} />
-          <Route path="/members" element={<Members />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/join" element={<Join />} />
           <Route path="/partner" element={<Partner />} />

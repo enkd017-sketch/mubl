@@ -2,14 +2,20 @@ import { Calendar as CalendarIcon, MapPin, Users, ArrowRight } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 
+// Import event images
+import spacefestImage from "@/assets/showcase/spacefest-2025.jpg";
+import bootcampImage from "@/assets/events/stem-bootcamp.png";
+
 const events = [
   {
     title: "SpaceFest 2025",
     description: "Annual space technology festival organized at New Uzbekistan University featuring workshops, competitions, and expert talks.",
-    date: "March 2025",
+    date: "October 4th, 2025",
     location: "New Uzbekistan University",
     attendees: "200+",
     featured: true,
+    image: spacefestImage,
+    link: "https://spacefest.newuu.uz",
   },
   {
     title: "MUBL STEM Bootcamp",
@@ -18,6 +24,8 @@ const events = [
     location: "MUBL Lab",
     attendees: "30",
     featured: false,
+    image: bootcampImage,
+    link: "https://bootcamp.mubl.uz",
   },
   {
     title: "Reverse Engineering Sessions",
@@ -54,14 +62,19 @@ export default function Events() {
             </p>
           </div>
 
-          {/* Featured Event */}
+          {/* Featured Event - SpaceFest */}
           <div className="mb-12 max-w-5xl">
             <FeaturedEventCard event={events[0]} />
           </div>
 
+          {/* STEM Bootcamp - Secondary Featured */}
+          <div className="mb-12 max-w-5xl">
+            <SecondaryFeaturedCard event={events[1]} />
+          </div>
+
           {/* Events Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
-            {events.slice(1).map((event, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
+            {events.slice(2).map((event, index) => (
               <EventCard key={index} event={event} />
             ))}
           </div>
@@ -100,14 +113,80 @@ function FeaturedEventCard({ event }: { event: typeof events[0] }) {
                 {event.attendees} Attendees
               </div>
             </div>
-            <Button className="bg-primary hover:bg-primary/90 rounded-full">
-              Learn More
-              <ArrowRight className="ml-2 h-4 w-4" />
+            {event.link && (
+              <Button className="bg-primary hover:bg-primary/90 rounded-full" asChild>
+                <a href={event.link} target="_blank" rel="noopener noreferrer">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            )}
+          </div>
+          <div className="w-full lg:w-80 h-48 lg:h-64 rounded-2xl overflow-hidden">
+            {event.image ? (
+              <img 
+                src={event.image} 
+                alt={event.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-primary/20 flex items-center justify-center">
+                <span className="text-6xl">🚀</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SecondaryFeaturedCard({ event }: { event: typeof events[0] }) {
+  return (
+    <div className="rounded-2xl border border-border bg-card overflow-hidden">
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full md:w-1/3 h-48 md:h-auto">
+          {event.image ? (
+            <img 
+              src={event.image} 
+              alt={event.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full bg-primary/20 flex items-center justify-center">
+              <span className="text-4xl">📚</span>
+            </div>
+          )}
+        </div>
+        <div className="flex-1 p-6 md:p-8">
+          <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+            {event.title}
+          </h3>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            {event.description}
+          </p>
+          <div className="flex flex-wrap gap-4 mb-4">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CalendarIcon className="h-4 w-4 text-primary" />
+              {event.date}
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <MapPin className="h-4 w-4 text-primary" />
+              {event.location}
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Users className="h-4 w-4 text-primary" />
+              {event.attendees} Attendees
+            </div>
+          </div>
+          {event.link && (
+            <Button variant="outline" className="rounded-full border-primary/50 hover:bg-primary/10" asChild>
+              <a href={event.link} target="_blank" rel="noopener noreferrer">
+                Learn More
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
-          </div>
-          <div className="w-full lg:w-80 h-48 lg:h-64 rounded-2xl bg-primary/20 flex items-center justify-center">
-            <span className="text-6xl">🚀</span>
-          </div>
+          )}
         </div>
       </div>
     </div>
