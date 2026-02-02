@@ -73,15 +73,20 @@ const socialLinks = [
 
 export function AppSidebar() {
   const location = useLocation();
-  const { state, toggleSidebar } = useSidebar();
+  const { state, toggleSidebar, setOpenMobile } = useSidebar();
   const isCollapsed = state === "collapsed";
 
   const isActive = (path: string) => location.pathname === path;
 
+  // Close mobile sidebar when navigating
+  const handleNavClick = () => {
+    setOpenMobile(false);
+  };
+
   return (
     <Sidebar 
       collapsible="icon" 
-      className="border-r border-sidebar-border bg-sidebar"
+      className="border-r border-sidebar-border bg-sidebar hidden md:flex"
     >
       <SidebarHeader className="p-4">
         <div className="flex flex-col">
@@ -133,6 +138,7 @@ export function AppSidebar() {
                   >
                     <NavLink 
                       to={item.url}
+                      onClick={handleNavClick}
                       className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
                         isActive(item.url) 
                           ? "bg-primary text-primary-foreground" 
@@ -174,6 +180,7 @@ export function AppSidebar() {
                     ) : (
                       <NavLink 
                         to={item.url}
+                        onClick={handleNavClick}
                         className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
                           isActive(item.url) 
                             ? "bg-primary text-primary-foreground" 
