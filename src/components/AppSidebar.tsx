@@ -38,12 +38,12 @@ import mublWhiteLogo from "@/assets/mubl-white-logo.png";
 const mainNavItems = [
   { title: "Home", url: "/", icon: Home },
   { title: "About", url: "/about", icon: Info },
+  { title: "Ideas", url: "/ideas", icon: Send },
   { title: "Projects", url: "/projects", icon: FolderOpen },
   { title: "Events", url: "/events", icon: Calendar },
   { title: "Achievements", url: "/achievements", icon: Trophy },
   { title: "Blog", url: "/blog", icon: BookOpen },
   { title: "Resources", url: "/resources", icon: FileText },
-  { title: "Ideas", url: "/ideas", icon: Send },
   { title: "Connect", url: "/connect", icon: MessageCircle },
 ];
 
