@@ -194,21 +194,23 @@ export default function Resources() {
                     )}
                   </div>
                 ))}
-
-                {/* Contribute CTA */}
-                <div className="p-6 rounded-xl bg-primary/10 border border-primary/20 text-center mt-8">
-                  <Users className="h-10 w-10 mx-auto mb-4 text-primary" />
-                  <h4 className="text-lg font-semibold text-foreground mb-2">Contribute to Resources</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Share your CAD files, tutorials, or learning materials with the MUBL community.
-                  </p>
-                  <Button className="bg-primary hover:bg-primary/90 rounded-full">
-                    Submit Resources
-                  </Button>
-                </div>
               </div>
             </TabsContent>
           </Tabs>
+
+          {/* Contribute CTA - Permanent Section */}
+          <div className="max-w-5xl mt-12">
+            <div className="p-8 rounded-2xl bg-card border border-border text-center">
+              <Users className="h-12 w-12 mx-auto mb-4 text-primary" />
+              <h4 className="text-xl font-bold text-foreground mb-2">Contribute to Resources</h4>
+              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                Share your CAD files, tutorials, or learning materials with the MUBL community.
+              </p>
+              <Button className="bg-primary hover:bg-primary/90 rounded-full px-8">
+                Submit Resources
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
