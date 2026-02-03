@@ -43,6 +43,7 @@ const mainNavItems = [
   { title: "Achievements", url: "/achievements", icon: Trophy },
   { title: "Blog", url: "/blog", icon: BookOpen },
   { title: "Resources", url: "/resources", icon: FileText },
+  { title: "Ideas", url: "/ideas", icon: Send },
   { title: "Connect", url: "/connect", icon: MessageCircle },
 ];
 

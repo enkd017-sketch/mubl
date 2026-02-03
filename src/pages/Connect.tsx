@@ -70,10 +70,12 @@ export default function Connect() {
                   Have an idea? Submit your project through our form and we'll help you 
                   refine it, find a team, and prepare for development.
                 </p>
-                <Button className="bg-primary hover:bg-primary/90 w-full rounded-full">
+              <Button className="bg-primary hover:bg-primary/90 w-full rounded-full" asChild>
+                <a href="https://forms.gle/Ts7cKwWE5yxNi4zt9" target="_blank" rel="noopener noreferrer">
                   Submit Project
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                </a>
+              </Button>
               </div>
             </div>
 
