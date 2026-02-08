@@ -105,8 +105,8 @@ export function EventRegistrationSection() {
                 <Calendar className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="text-primary font-medium">Friday,</p>
-                <p className="text-muted-foreground text-sm">11 February, 2025</p>
+                <p className="text-primary font-medium">Wednesday,</p>
+                <p className="text-muted-foreground text-sm">11 February, 2026</p>
               </div>
             </div>
             
