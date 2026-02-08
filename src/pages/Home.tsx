@@ -2,6 +2,7 @@ import { ArrowRight, Rocket, Users, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { EventRegistrationSection } from "@/components/EventRegistrationSection";
 
 // Import showcase images
 import cansatProject from "@/assets/showcase/cansat-project.png";
@@ -60,6 +61,9 @@ export default function Home() {
                 <Link to="/connect">Get in Touch</Link>
               </Button>
             </div>
+
+            {/* Event Registration */}
+            <EventRegistrationSection />
 
             {/* Who We Are */}
             <div className="mb-16">
