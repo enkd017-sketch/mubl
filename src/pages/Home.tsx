@@ -27,7 +27,7 @@ const stats = [
 
 export default function Home() {
   return (
-    <Layout showBackground>
+    <Layout>
       <div className="min-h-screen">
 
         {/* Hero Section */}
