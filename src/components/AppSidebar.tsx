@@ -7,11 +7,6 @@ import {
   Trophy, 
   BookOpen, 
   FileText, 
-  Users,
-  MessageCircle,
-  UserPlus,
-  Handshake,
-  Mail,
   Linkedin,
   Globe,
   PanelLeftClose,
@@ -44,13 +39,6 @@ const mainNavItems = [
   { title: "Achievements", url: "/achievements", icon: Trophy },
   { title: "Blog", url: "/blog", icon: BookOpen },
   { title: "Resources", url: "/resources", icon: FileText },
-  { title: "Connect", url: "/connect", icon: MessageCircle },
-];
-
-const actionItems = [
-  { title: "Join as Member", url: "/join", icon: UserPlus },
-  { title: "Collaborate / Partner", url: "/partner", icon: Handshake },
-  { title: "Email Us", url: "mailto:mubl@newuu.uz", icon: Mail, external: true },
 ];
 
 const socialLinks = [
@@ -155,48 +143,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarSeparator className="my-2" />
-
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-sidebar-foreground/50 text-xs font-normal">
-            Connect
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {actionItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton 
-                    asChild
-                    tooltip={item.title}
-                  >
-                    {item.external ? (
-                      <a 
-                        href={item.url}
-                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all"
-                      >
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </a>
-                    ) : (
-                      <NavLink 
-                        to={item.url}
-                        onClick={handleNavClick}
-                        className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
-                          isActive(item.url) 
-                            ? "bg-primary text-primary-foreground" 
-                            : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                        }`}
-                      >
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </NavLink>
-                    )}
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter className="p-4">

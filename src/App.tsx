@@ -11,7 +11,7 @@ import Achievements from "./pages/Achievements";
 import Blog from "./pages/Blog";
 import Resources from "./pages/Resources";
 import Ideas from "./pages/Ideas";
-import Connect from "./pages/Connect";
+
 import Join from "./pages/Join";
 import Partner from "./pages/Partner";
 import NotFound from "./pages/NotFound";
@@ -33,7 +33,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/ideas" element={<Ideas />} />
-          <Route path="/connect" element={<Connect />} />
+          
           <Route path="/join" element={<Join />} />
           <Route path="/partner" element={<Partner />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
