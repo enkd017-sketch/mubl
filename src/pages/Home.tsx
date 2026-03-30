@@ -1,8 +1,7 @@
-import { ArrowRight, Rocket, Users, Trophy } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Users, Rocket, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-
+import HeroSection from "@/components/ui/hero-section";
 
 // Import showcase images
 import cansatProject from "@/assets/showcase/cansat-project.png";
@@ -10,6 +9,7 @@ import uzcansat2025 from "@/assets/showcase/uzcansat-2025.png";
 import teknofest2025 from "@/assets/showcase/teknofest-2025.png";
 import spacefest2025 from "@/assets/showcase/spacefest-2025.jpg";
 import youngLeaders2025 from "@/assets/showcase/young-leaders-2025.png";
+import { Button } from "@/components/ui/button";
 
 const showcaseImages = [
   { src: cansatProject, alt: "CanSat Project", label: "CanSat" },
@@ -19,76 +19,58 @@ const showcaseImages = [
   { src: youngLeaders2025, alt: "Young Leaders 2025", label: "Young Leaders 2025" },
 ];
 
-const stats = [
-  { icon: Users, value: "50+", label: "Active Members" },
-  { icon: Rocket, value: "15+", label: "Projects Built" },
-  { icon: Trophy, value: "5+", label: "Competition Wins" },
-];
-
 export default function Home() {
   return (
     <Layout>
       <div className="min-h-screen">
-
-        {/* Hero Section */}
         <section className="px-6 py-12 lg:py-20">
           <div className="max-w-6xl">
-            {/* Main Heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
-              Research. Build.{" "}
-              <span className="text-primary">Publish.</span>{" "}
-              Lead.
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              From theory to real engineering.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-16">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 border border-primary/50 rounded-full px-8"
-                asChild
-              >
-                <Link to="/join">Join Us</Link>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-border/50 rounded-full px-8 hover:bg-muted/20"
-                asChild
-              >
-                <Link to="/connect">Get in Touch</Link>
-              </Button>
-            </div>
-
-
-            {/* Who We Are */}
-            <div className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                Who We Are
-              </h2>
-              <p className="text-muted-foreground leading-relaxed max-w-3xl">
-                MUBL Club actively works on technology competitions, applied research, and building 
-                functional prototypes that grow into real products. Our members collaborate in 
-                multidisciplinary teams to solve real-world problems using robotics, AI, and modern 
-                engineering tools.
-              </p>
-            </div>
+            <HeroSection
+              title={
+                <>
+                  Research. Build.{" "}
+                  <span className="text-primary">Publish.</span>{" "}
+                  Lead.
+                </>
+              }
+              subtitle="From theory to real engineering. MUBL Club actively works on technology competitions, applied research, and building functional prototypes that grow into real products."
+              actions={[
+                {
+                  text: "Join Us",
+                  href: "/join",
+                  variant: "default",
+                },
+                {
+                  text: "Get in Touch",
+                  href: "mailto:mubl@newuu.uz",
+                  variant: "outline",
+                },
+              ]}
+              stats={[
+                { value: "50+", label: "Active Members", icon: <Users className="h-5 w-5" /> },
+                { value: "15+", label: "Projects Built", icon: <Rocket className="h-5 w-5" /> },
+                { value: "5+", label: "Competition Wins", icon: <Trophy className="h-5 w-5" /> },
+              ]}
+              images={[
+                cansatProject,
+                spacefest2025,
+                uzcansat2025,
+              ]}
+            />
 
             {/* What We've Done - Image Showcase */}
-            <div className="mb-16">
+            <div className="mb-16 mt-20">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
                 What We've Done
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-6">
                 {showcaseImages.map((image, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="relative overflow-hidden rounded-xl border border-primary/30 aspect-[4/3] group"
                   >
-                    <img 
-                      src={image.src} 
+                    <img
+                      src={image.src}
                       alt={image.alt}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
@@ -99,8 +81,8 @@ export default function Home() {
                 ))}
               </div>
               <div className="flex justify-center">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="rounded-full border-primary/50 px-8 hover:bg-primary/10"
                   asChild
                 >
@@ -112,70 +94,46 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Impact Section with Stats Stack */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-              {/* Impact Content */}
-              <div className="lg:col-span-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                  <span className="text-primary">Impact</span>
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Our mission is to help students move{" "}
-                    <span className="text-foreground font-medium">from theory to real engineering</span>{" "}
-                    by working on{" "}
-                    <span className="text-foreground font-medium">hands-on projects</span>{" "}
-                    that address real-world problems.
-                  </p>
-                  <p>
-                    Through{" "}
-                    <span className="text-foreground font-medium">mentorship</span>{" "}
-                    and lectures from{" "}
-                    <span className="text-foreground font-medium">national</span>{" "}
-                    and{" "}
-                    <span className="text-foreground font-medium">international</span>{" "}
-                    experts, we expose students to global standards 
-                    and modern engineering practices.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <Button 
-                    variant="outline" 
-                    className="rounded-full border-primary/50 px-8 hover:bg-primary/10"
-                    asChild
-                  >
-                    <Link to="/about">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
+            {/* Impact Section */}
+            <div className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                <span className="text-primary">Impact</span>
+              </h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed max-w-3xl">
+                <p>
+                  Our mission is to help students move{" "}
+                  <span className="text-foreground font-medium">from theory to real engineering</span>{" "}
+                  by working on{" "}
+                  <span className="text-foreground font-medium">hands-on projects</span>{" "}
+                  that address real-world problems.
+                </p>
+                <p>
+                  Through{" "}
+                  <span className="text-foreground font-medium">mentorship</span>{" "}
+                  and lectures from{" "}
+                  <span className="text-foreground font-medium">national</span>{" "}
+                  and{" "}
+                  <span className="text-foreground font-medium">international</span>{" "}
+                  experts, we expose students to global standards
+                  and modern engineering practices.
+                </p>
               </div>
-
-              {/* Stats Stack */}
-              <div className="flex flex-col gap-4">
-                {stats.map((stat, index) => (
-                  <StatCard key={index} icon={stat.icon} value={stat.value} label={stat.label} />
-                ))}
+              <div className="mt-6">
+                <Button
+                  variant="outline"
+                  className="rounded-full border-primary/50 px-8 hover:bg-primary/10"
+                  asChild
+                >
+                  <Link to="/about">
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
         </section>
       </div>
     </Layout>
-  );
-}
-
-function StatCard({ icon: Icon, value, label }: { icon: any; value: string; label: string }) {
-  return (
-    <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50">
-      <div className="p-3 rounded-lg bg-primary/20">
-        <Icon className="h-6 w-6 text-primary" />
-      </div>
-      <div className="text-left">
-        <div className="text-2xl font-bold text-foreground">{value}</div>
-        <div className="text-sm text-muted-foreground">{label}</div>
-      </div>
-    </div>
   );
 }

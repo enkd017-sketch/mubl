@@ -1,27 +1,21 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { MobileHeader } from "@/components/MobileHeader";
-import homeBg from "@/assets/home-bg.jpg";
+import { ParticleBackground } from "@/components/ui/particle-background";
 
 interface LayoutProps {
   children: React.ReactNode;
-  showBackground?: boolean;
 }
 
-export function Layout({ children, showBackground = false }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full">
         <AppSidebar />
         <MobileHeader />
-        <SidebarInset className={`flex-1 overflow-auto ${showBackground ? "!bg-transparent" : ""}`}>
-          {showBackground && (
-            <div 
-              className="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
-              style={{ backgroundImage: `url(${homeBg})` }}
-            />
-          )}
-          <main className={`${showBackground ? "relative z-10" : ""} pt-16 md:pt-0`}>
+        <SidebarInset className="flex-1 overflow-auto">
+          <ParticleBackground />
+          <main className="relative z-10 pt-16 md:pt-0">
             {children}
           </main>
         </SidebarInset>
