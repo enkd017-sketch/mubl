@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 export default function Blog() {
   return (
     <Layout>
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center px-6">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
             <BookOpen className="h-10 w-10 text-primary" />
