@@ -1,6 +1,7 @@
 import { ArrowRight, Lightbulb, Users, Trophy, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
+import { AnimatedShaderHeroBackground } from "@/components/ui/animated-shader-hero";
 
 const benefits = [
   { icon: Users, title: "Find Your Team", description: "We'll help you connect with motivated teammates who share your vision" },
@@ -18,23 +19,25 @@ export default function Ideas() {
   return (
     <Layout>
       <div className="page-frame">
-        <section className="page-section">
-          <div className="max-w-6xl">
-            <div className="section-shell">
-              <div className="mb-14 max-w-4xl">
-                <div className="eyebrow">
+        <section className="page-section page-section-wide">
+          <div className="section-shell page-shell-screen border-white/10 bg-slate-950/72 shadow-[0_40px_120px_rgba(2,6,23,0.48)] backdrop-blur-sm">
+              <AnimatedShaderHeroBackground className="opacity-95" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.16),transparent_26%),linear-gradient(180deg,rgba(2,6,23,0.14),rgba(2,6,23,0.42))]" />
+
+              <div className="relative z-10 mb-14 max-w-4xl">
+                <div className="eyebrow border-blue-300/20 bg-blue-500/10 text-blue-100/80">
                   <Lightbulb className="h-4 w-4" />
                   Submit Your Idea
                 </div>
-                <h1 className="page-title mt-5">
+                <h1 className="page-title mt-5 text-white">
                   Have a project idea? <span className="text-primary">Let&apos;s build it together.</span>
                 </h1>
-                <p className="page-copy mt-5">
+                <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
                   You do not need a finished plan or a complete team. Bring the raw idea and the club will help shape it into a real engineering path.
                 </p>
               </div>
 
-              <div className="mb-12 space-y-3">
+              <div className="relative z-10 mb-12 space-y-3">
               {highlights.map((h, i) => (
                 <div key={i} className="flex items-center gap-3 text-white">
                   <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
@@ -43,19 +46,19 @@ export default function Ideas() {
               ))}
             </div>
 
-              <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="relative z-10 mb-12 grid grid-cols-1 gap-6 xl:grid-cols-3">
               {benefits.map((b, i) => (
-                <div key={i} className="glass-card p-6">
+                <div key={i} className="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-6 shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
                     <b.icon className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="mb-2 text-lg font-semibold text-white">{b.title}</h3>
-                  <p className="text-sm text-slate-400">{b.description}</p>
+                  <p className="text-sm text-slate-300/85">{b.description}</p>
                 </div>
               ))}
             </div>
 
-              <div className="glass-panel text-center p-8 md:p-12">
+              <div className="relative z-10 rounded-[1.75rem] border border-white/8 bg-white/[0.04] p-8 text-center shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md md:p-12">
                 <h2 className="text-2xl font-semibold text-white md:text-3xl">Submit your project idea</h2>
                 <p className="mx-auto mb-8 mt-4 max-w-xl text-slate-300">Let&apos;s turn your idea into something real together.</p>
                 <Button size="lg" className="rounded-full bg-primary px-8 hover:bg-primary/90" asChild>
@@ -64,7 +67,7 @@ export default function Ideas() {
                   </a>
                 </Button>
               </div>
-            </div>
+          </div>
         </section>
       </div>
     </Layout>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import HeroSection9 from "@/components/ui/hero-section-9";
 import teknofest2025 from "@/assets/showcase/teknofest-2025.png";
 import spacefest2025 from "@/assets/showcase/spacefest-2025.jpg";
-import youngLeaders2025 from "@/assets/showcase/young-leaders-2025.png";
+import uzcansat2025 from "@/assets/showcase/uzcansat-2025.png";
 
 const pathways = [
   {
@@ -57,7 +57,7 @@ export default function Home() {
               },
             ]}
             stats={homeStats}
-            images={[teknofest2025, spacefest2025, youngLeaders2025]}
+            images={[teknofest2025, spacefest2025, uzcansat2025]}
           />
         </section>
 

@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 interface Particle {
   x: number;
@@ -22,31 +24,53 @@ interface AmbientParticle {
   phase: number;
 }
 
-const MAIN_DENSITY = 0.000055;
-const AMBIENT_DENSITY = 0.000025;
-const POINTER_RADIUS = 160;
-const RETURN_SPEED = 0.015;
+interface ParticleEffectForHeroProps {
+  className?: string;
+  scope?: "viewport" | "container";
+  intensity?: "low" | "medium";
+}
+
+const DENSITY_PRESETS = {
+  low: { main: 0.00005, ambient: 0.000024 },
+  medium: { main: 0.000082, ambient: 0.00004 },
+} as const;
+
+const POINTER_RADIUS = 170;
+const RETURN_SPEED = 0.016;
 const DAMPING = 0.94;
 
 const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
 
-export default function ParticleEffectForHero() {
+export default function ParticleEffectForHero({
+  className,
+  scope = "container",
+  intensity = "medium",
+}: ParticleEffectForHeroProps) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme !== "light";
+  const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mainParticlesRef = useRef<Particle[]>([]);
+  const particlesRef = useRef<Particle[]>([]);
   const ambientParticlesRef = useRef<AmbientParticle[]>([]);
   const frameIdRef = useRef<number>();
   const pointerRef = useRef({ x: -1000, y: -1000, active: false });
   const sizeRef = useRef({ width: 0, height: 0, dpr: 1 });
 
   useEffect(() => {
+    const container = containerRef.current;
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!container || !canvas) return;
 
+    const density = DENSITY_PRESETS[intensity];
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const ambientColor = isDark ? "#dbeafe" : "#64748b";
+    const mainBlueBase = isDark ? "37, 99, 235" : "29, 78, 216";
+    const mainNeutralBase = isDark ? "255, 255, 255" : "71, 85, 105";
 
     const rebuildParticles = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const rect = container.getBoundingClientRect();
+      const width = Math.max(rect.width, 1);
+      const height = Math.max(rect.height, 1);
       const dpr = window.devicePixelRatio || 1;
 
       sizeRef.current = { width, height, dpr };
@@ -56,10 +80,10 @@ export default function ParticleEffectForHero() {
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
 
-      const mainCount = Math.floor(width * height * MAIN_DENSITY);
-      const ambientCount = Math.floor(width * height * AMBIENT_DENSITY);
+      const mainCount = Math.floor(width * height * density.main);
+      const ambientCount = Math.floor(width * height * density.ambient);
 
-      mainParticlesRef.current = Array.from({ length: mainCount }, () => {
+      particlesRef.current = Array.from({ length: mainCount }, () => {
         const x = Math.random() * width;
         const y = Math.random() * height;
 
@@ -70,8 +94,8 @@ export default function ParticleEffectForHero() {
           originY: y,
           vx: 0,
           vy: 0,
-          size: randomBetween(0.8, 2.2),
-          tint: Math.random() > 0.88 ? "blue" : "white",
+          size: randomBetween(1.7, 3.8),
+          tint: Math.random() > 0.84 ? "blue" : "white",
           drift: Math.random() * Math.PI * 2,
         };
       });
@@ -79,12 +103,32 @@ export default function ParticleEffectForHero() {
       ambientParticlesRef.current = Array.from({ length: ambientCount }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: randomBetween(-0.06, 0.06),
-        vy: randomBetween(-0.06, 0.06),
-        size: randomBetween(0.5, 1.4),
-        alpha: randomBetween(0.08, 0.3),
+        vx: randomBetween(-0.05, 0.05),
+        vy: randomBetween(-0.05, 0.05),
+        size: randomBetween(0.9, 2),
+        alpha: randomBetween(0.08, 0.28),
         phase: Math.random() * Math.PI * 2,
       }));
+    };
+
+    const updatePointer = (clientX: number, clientY: number) => {
+      const rect = container.getBoundingClientRect();
+      const inside =
+        clientX >= rect.left &&
+        clientX <= rect.right &&
+        clientY >= rect.top &&
+        clientY <= rect.bottom;
+
+      if (!inside) {
+        pointerRef.current.active = false;
+        return;
+      }
+
+      pointerRef.current = {
+        x: clientX - rect.left,
+        y: clientY - rect.top,
+        active: true,
+      };
     };
 
     const render = (time: number) => {
@@ -95,31 +139,31 @@ export default function ParticleEffectForHero() {
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
       context.clearRect(0, 0, width, height);
 
-      const coreGlow = context.createRadialGradient(
-        width * 0.52,
-        height * 0.2,
+      const primaryGlow = context.createRadialGradient(
+        width * 0.7,
+        height * 0.18,
         0,
-        width * 0.52,
-        height * 0.2,
-        Math.max(width, height) * 0.65,
+        width * 0.7,
+        height * 0.18,
+        Math.max(width, height) * 0.52,
       );
-      coreGlow.addColorStop(0, "rgba(30, 110, 255, 0.18)");
-      coreGlow.addColorStop(0.45, "rgba(17, 66, 170, 0.08)");
-      coreGlow.addColorStop(1, "rgba(4, 8, 20, 0)");
-      context.fillStyle = coreGlow;
+      primaryGlow.addColorStop(0, "rgba(37, 99, 235, 0.22)");
+      primaryGlow.addColorStop(0.45, "rgba(29, 78, 216, 0.08)");
+      primaryGlow.addColorStop(1, "rgba(15, 23, 42, 0)");
+      context.fillStyle = primaryGlow;
       context.fillRect(0, 0, width, height);
 
-      const edgeGlow = context.createRadialGradient(
-        width * 0.18,
-        height * 0.85,
+      const secondaryGlow = context.createRadialGradient(
+        width * 0.12,
+        height * 0.86,
         0,
-        width * 0.18,
-        height * 0.85,
-        width * 0.5,
+        width * 0.12,
+        height * 0.86,
+        width * 0.48,
       );
-      edgeGlow.addColorStop(0, "rgba(61, 140, 255, 0.08)");
-      edgeGlow.addColorStop(1, "rgba(2, 8, 24, 0)");
-      context.fillStyle = edgeGlow;
+      secondaryGlow.addColorStop(0, "rgba(96, 165, 250, 0.12)");
+      secondaryGlow.addColorStop(1, "rgba(37, 99, 235, 0)");
+      context.fillStyle = secondaryGlow;
       context.fillRect(0, 0, width, height);
 
       for (const particle of ambientParticlesRef.current) {
@@ -131,9 +175,9 @@ export default function ParticleEffectForHero() {
         if (particle.y < 0) particle.y = height;
         if (particle.y > height) particle.y = 0;
 
-        const twinkle = Math.sin(time * 0.0014 + particle.phase) * 0.5 + 0.5;
+        const twinkle = Math.sin(time * 0.0015 + particle.phase) * 0.5 + 0.5;
         context.globalAlpha = particle.alpha * (0.35 + twinkle * 0.65);
-        context.fillStyle = "#dbeafe";
+        context.fillStyle = ambientColor;
         context.beginPath();
         context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         context.fill();
@@ -143,9 +187,9 @@ export default function ParticleEffectForHero() {
 
       const { x: pointerX, y: pointerY, active } = pointerRef.current;
 
-      for (const particle of mainParticlesRef.current) {
-        const subtleOscillation = Math.sin(time * 0.0008 + particle.drift) * 0.12;
-        particle.vy += subtleOscillation * 0.01;
+      for (const particle of particlesRef.current) {
+        const oscillation = Math.sin(time * 0.0008 + particle.drift) * 0.12;
+        particle.vy += oscillation * 0.01;
 
         if (active) {
           const dx = particle.x - pointerX;
@@ -171,8 +215,8 @@ export default function ParticleEffectForHero() {
         context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         context.fillStyle =
           particle.tint === "blue"
-            ? `rgba(59, 130, 246, ${Math.min(0.5 + speed * 0.25, 0.95)})`
-            : `rgba(255, 255, 255, ${Math.min(0.18 + speed * 0.16, 0.85)})`;
+            ? `rgba(${mainBlueBase}, ${Math.min(0.44 + speed * 0.2, 0.86)})`
+            : `rgba(${mainNeutralBase}, ${Math.min(0.18 + speed * 0.14, isDark ? 0.62 : 0.72)})`;
         context.fill();
       }
 
@@ -182,7 +226,7 @@ export default function ParticleEffectForHero() {
     };
 
     const handlePointerMove = (event: MouseEvent) => {
-      pointerRef.current = { x: event.clientX, y: event.clientY, active: true };
+      updatePointer(event.clientX, event.clientY);
     };
 
     const handlePointerLeave = () => {
@@ -195,26 +239,37 @@ export default function ParticleEffectForHero() {
       frameIdRef.current = window.requestAnimationFrame(render);
     };
 
+    const resizeObserver = new ResizeObserver(() => {
+      rebuildParticles();
+      if (mediaQuery.matches) {
+        render(performance.now());
+      }
+    });
+
+    resizeObserver.observe(container);
     start();
-    window.addEventListener("resize", rebuildParticles);
-    window.addEventListener("mousemove", handlePointerMove);
+    window.addEventListener("mousemove", handlePointerMove, { passive: true });
     window.addEventListener("mouseleave", handlePointerLeave);
 
     return () => {
-      window.removeEventListener("resize", rebuildParticles);
+      resizeObserver.disconnect();
       window.removeEventListener("mousemove", handlePointerMove);
       window.removeEventListener("mouseleave", handlePointerLeave);
       cancelAnimationFrame(frameIdRef.current ?? 0);
     };
-  }, []);
+  }, [intensity, isDark]);
 
   return (
     <div
+      ref={containerRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      className={cn(
+        scope === "viewport"
+          ? "pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+          : "pointer-events-none absolute inset-0 z-0 overflow-hidden",
+        className,
+      )}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.16),transparent_42%),linear-gradient(180deg,rgba(3,10,28,0.96),rgba(5,10,22,1))]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/20 to-transparent" />
       <canvas ref={canvasRef} className="h-full w-full" />
     </div>
   );

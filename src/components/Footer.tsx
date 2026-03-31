@@ -6,6 +6,7 @@ const navigationColumns = [
   [
     { name: "Projects", href: "/projects" },
     { name: "Events", href: "/events" },
+    { name: "Ideas", href: "/ideas" },
   ],
   [
     { name: "Achievements", href: "/achievements" },
@@ -32,12 +33,6 @@ export function Footer() {
               A student-led engineering club at New Uzbekistan University. We research, 
               build, publish, and lead in the fields of robotics, AI, and space technology.
             </p>
-            <div className="rounded-3xl border border-white/8 bg-white/[0.03] p-5">
-              <p className="text-sm uppercase tracking-[0.24em] text-blue-200/70">Mission</p>
-              <p className="mt-3 text-sm leading-7 text-slate-300">
-                We turn students into builders through competitions, hands-on research, and mentorship rooted in real engineering practice.
-              </p>
-            </div>
           </div>
 
           {/* Navigation */}

@@ -34,8 +34,8 @@ export default function Resources() {
   return (
     <Layout>
       <div className="page-frame">
-        <section className="page-section">
-          <div className="section-shell max-w-6xl">
+        <section className="page-section page-section-wide">
+          <div className="section-shell page-shell-screen">
             <div className="mb-12 max-w-3xl">
               <div className="eyebrow">Resources</div>
               <h1 className="page-title mt-5">

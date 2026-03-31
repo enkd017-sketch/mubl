@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 38 45% 96%;
+    --foreground: 222 47% 12%;
 
-    --card: 222 47% 14%;
-    --card-foreground: 210 40% 98%;
+    --card: 42 44% 97%;
+    --card-foreground: 222 47% 12%;
 
-    --popover: 222 47% 14%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 42 44% 97%;
+    --popover-foreground: 222 47% 12%;
 
     --primary: 210 100% 52%;
-    --primary-foreground: 222 47% 5%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 42 32% 94%;
+    --secondary-foreground: 222 47% 12%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 40 26% 92%;
+    --muted-foreground: 217 16% 46%;
 
     --accent: 210 100% 52%;
     --accent-foreground: 210 40% 98%;
@@ -30,8 +30,8 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
+    --border: 214 28% 84%;
+    --input: 214 28% 84%;
     --ring: 210 100% 52%;
 
     --radius: 0.75rem;
@@ -40,17 +40,35 @@
     --gradient-primary: linear-gradient(135deg, hsl(210 100% 52%) 0%, hsl(210 100% 40%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 11% / 0.8) 0%, hsl(222 47% 5% / 0.9) 100%);
     --gradient-card: linear-gradient(180deg, hsl(222 47% 14%) 0%, hsl(222 47% 11%) 100%);
-    --shadow-glow: 0 0 20px hsl(210 100% 52% / 0.15);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.2);
-    --shadow-card-hover: 0 8px 32px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 20px hsl(210 100% 52% / 0.18);
+    --shadow-card: 0 8px 36px rgba(15, 23, 42, 0.08);
+    --shadow-card-hover: 0 12px 42px rgba(15, 23, 42, 0.12);
 
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 90%;
+    --site-bg-image:
+      radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 34%),
+      linear-gradient(180deg, rgb(251, 247, 240), rgb(248, 242, 232));
+    --surface-border: rgba(120, 98, 69, 0.12);
+    --surface-bg: rgba(251, 247, 240, 0.94);
+    --surface-bg-strong: rgba(255, 250, 244, 0.98);
+    --surface-shadow: 0 32px 80px rgba(15, 23, 42, 0.08);
+    --surface-shadow-soft: 0 18px 42px rgba(15, 23, 42, 0.08);
+    --eyebrow-border: rgba(59, 130, 246, 0.16);
+    --eyebrow-bg: rgba(59, 130, 246, 0.08);
+    --eyebrow-text: rgba(30, 64, 175, 0.88);
+    --title-color: rgb(15, 23, 42);
+    --copy-color: rgba(30, 41, 59, 0.86);
+    --copy-muted: rgba(71, 85, 105, 0.92);
+    --field-bg: rgba(255, 251, 245, 1);
+    --field-text: rgb(15, 23, 42);
+    --field-placeholder: rgba(100, 116, 139, 0.9);
+
+    --sidebar-background: 214 36% 95%;
+    --sidebar-foreground: 222 47% 12%;
     --sidebar-primary: 210 100% 52%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 33% 15%;
-    --sidebar-accent-foreground: 210 40% 90%;
-    --sidebar-border: 217 33% 15%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 30% 92%;
+    --sidebar-accent-foreground: 222 47% 12%;
+    --sidebar-border: 214 28% 84%;
     --sidebar-ring: 210 100% 52%;
   }
 
@@ -90,6 +108,24 @@
     --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.3);
     --shadow-card-hover: 0 8px 32px hsl(0 0% 0% / 0.4);
 
+    --site-bg-image:
+      radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 34%),
+      linear-gradient(180deg, rgba(6, 14, 28, 1), rgba(4, 10, 22, 1));
+    --surface-border: rgba(255, 255, 255, 0.08);
+    --surface-bg: rgba(255, 255, 255, 0.03);
+    --surface-bg-strong: rgba(255, 255, 255, 0.04);
+    --surface-shadow: 0 32px 80px rgba(2, 6, 23, 0.28);
+    --surface-shadow-soft: 0 16px 40px rgba(2, 6, 23, 0.22);
+    --eyebrow-border: rgba(96, 165, 250, 0.2);
+    --eyebrow-bg: rgba(59, 130, 246, 0.1);
+    --eyebrow-text: rgba(219, 234, 254, 0.8);
+    --title-color: white;
+    --copy-color: rgb(203, 213, 225);
+    --copy-muted: rgb(148, 163, 184);
+    --field-bg: rgba(2, 6, 23, 0.65);
+    --field-text: white;
+    --field-placeholder: rgba(100, 116, 139, 0.9);
+
     --sidebar-background: 222 47% 8%;
     --sidebar-foreground: 210 40% 90%;
     --sidebar-primary: 210 100% 52%;
@@ -112,9 +148,7 @@
 
   body {
     @apply bg-background text-foreground antialiased font-sans;
-    background-image:
-      radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 34%),
-      linear-gradient(180deg, rgba(6, 14, 28, 1), rgba(4, 10, 22, 1));
+    background-image: var(--site-bg-image);
   }
 }
 
@@ -156,44 +190,125 @@
     @apply container px-4 py-10 md:py-14;
   }
 
+  .page-section-wide {
+    width: 100%;
+    max-width: none;
+    padding-left: clamp(1rem, 3vw, 3rem);
+    padding-right: clamp(1rem, 3vw, 3rem);
+  }
+
+  .page-shell-screen {
+    min-height: calc(100svh - 7.5rem);
+    width: 100%;
+  }
+
   .section-shell {
-    @apply relative overflow-hidden rounded-[2rem] border border-white/8 bg-white/[0.03] p-6 shadow-[0_32px_80px_rgba(2,6,23,0.28)] backdrop-blur-sm md:p-8;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2rem;
+    border: 1px solid var(--surface-border);
+    background: var(--surface-bg);
+    box-shadow: var(--surface-shadow);
+    backdrop-filter: blur(14px);
+    padding: 1.5rem;
   }
 
   .glass-panel {
-    @apply rounded-[1.75rem] border border-white/8 bg-white/[0.04] shadow-[0_24px_72px_rgba(2,6,23,0.28)] backdrop-blur-sm;
+    border-radius: 1.75rem;
+    border: 1px solid var(--surface-border);
+    background: var(--surface-bg);
+    box-shadow: var(--surface-shadow);
+    backdrop-filter: blur(14px);
   }
 
   .glass-card {
-    @apply rounded-[1.5rem] border border-white/8 bg-white/[0.04] shadow-[0_16px_40px_rgba(2,6,23,0.22)] backdrop-blur-sm;
+    border-radius: 1.5rem;
+    border: 1px solid var(--surface-border);
+    background: var(--surface-bg-strong);
+    box-shadow: var(--surface-shadow-soft);
+    backdrop-filter: blur(12px);
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-blue-100/80;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--eyebrow-border);
+    background: var(--eyebrow-bg);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--eyebrow-text);
   }
 
   .page-title {
-    @apply text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl lg:text-6xl;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--title-color);
   }
 
   .section-title {
-    @apply text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: var(--title-color);
   }
 
   .page-copy {
-    @apply text-base leading-7 text-slate-300 md:text-lg;
+    @apply text-base leading-7 md:text-lg;
+    color: var(--copy-color);
   }
 
   .panel-copy {
-    @apply text-sm leading-6 text-slate-400 md:text-base;
+    @apply text-sm leading-6 md:text-base;
+    color: var(--copy-muted);
   }
 
   .field-label {
-    @apply mb-2 block text-sm font-medium text-white;
+    @apply mb-2 block text-sm font-medium;
+    color: var(--title-color);
   }
 
   .field-input {
-    @apply border-white/10 bg-slate-950/65 text-white placeholder:text-slate-500 focus-visible:ring-blue-400;
+    border-color: var(--surface-border);
+    background: var(--field-bg);
+    color: var(--field-text);
+  }
+}
+
+@layer base {
+  .field-input::placeholder {
+    color: var(--field-placeholder);
+  }
+}
+
+@media (min-width: 768px) {
+  @layer utilities {
+    .section-shell {
+      padding: 2rem;
+    }
+
+    .page-title {
+      font-size: 3rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  @layer utilities {
+    .page-title {
+      font-size: 3.75rem;
+    }
   }
 }
 

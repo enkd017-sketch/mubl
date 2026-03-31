@@ -17,32 +17,38 @@ export default function Join() {
   return (
     <Layout>
       <div className="page-frame">
-        <section className="page-section">
-          <div className="max-w-6xl">
-            <div className="mb-10 max-w-3xl">
-              <div className="eyebrow">Join MUBL</div>
-              <h1 className="page-title mt-5">
-                Join <span className="text-primary">MUBL</span>
-              </h1>
-              <p className="page-copy mt-5">Become part of our engineering community.</p>
-            </div>
+        <section className="page-section page-section-wide pt-4 md:pt-6">
+          <div className="page-shell-screen">
+            <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
+              <div className="flex flex-col gap-8 lg:gap-10">
+                <div className="max-w-3xl">
+                  <div className="eyebrow">Join MUBL</div>
+                  <h1 className="page-title mt-4 text-white md:mt-5">
+                    Join <span className="text-primary">MUBL</span>
+                  </h1>
+                  <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">
+                    Become part of our engineering community.
+                  </p>
+                </div>
 
-            <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-              <div className="order-2 glass-panel p-8 lg:order-1">
-                <h2 className="mb-6 text-2xl font-semibold text-white">Member Benefits</h2>
-                <ul className="space-y-5">
-                  {benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span className="text-lg text-slate-300">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="rounded-[2rem] border border-white/8 bg-white/[0.04] p-8 shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md">
+                  <h2 className="mb-6 text-2xl font-semibold text-white">Member Benefits</h2>
+                  <ul className="space-y-5">
+                    {benefits.map((benefit, index) => (
+                      <li key={index} className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 flex-shrink-0 text-primary" />
+                        <span className="text-lg text-slate-300">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
-              <div className="order-1 glass-panel p-6 md:p-8 lg:order-2">
-                <h2 className="mb-6 text-2xl font-semibold text-white md:text-3xl">Application Form</h2>
-                <form className="space-y-4">
+              <div className="self-start rounded-[2rem] border border-white/8 bg-white/[0.04] p-6 shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md md:p-8">
+                <h2 className="mb-8 text-2xl font-semibold text-white md:text-3xl lg:text-[3rem] lg:leading-none">
+                  Application Form
+                </h2>
+                <form className="space-y-5">
                   <div>
                     <label className="field-label">Full Name</label>
                     <Input placeholder="Your name" className="field-input h-14 rounded-2xl" />
@@ -57,9 +63,11 @@ export default function Join() {
                   </div>
                   <div>
                     <label className="field-label">Why do you want to join MUBL?</label>
-                    <Textarea placeholder="Tell us about yourself..." rows={5} className="field-input min-h-36 rounded-2xl" />
+                    <Textarea placeholder="Tell us about yourself..." rows={5} className="field-input min-h-40 rounded-2xl" />
                   </div>
-                  <Button className="w-full rounded-full bg-primary py-6 text-base hover:bg-primary/90">Submit Application</Button>
+                  <Button className="w-full rounded-full bg-primary py-6 text-base text-slate-950 shadow-[0_0_28px_rgba(37,99,235,0.35)] hover:bg-primary/90">
+                    Submit Application
+                  </Button>
                 </form>
               </div>
             </div>
