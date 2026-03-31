@@ -11,31 +11,32 @@ const achievements = [
 export default function Achievements() {
   return (
     <Layout>
-      <div className="min-h-screen">
-        <div className="container mx-auto px-6 py-12">
-          <div className="max-w-5xl mx-auto">
-            <div className="mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Proof of <span className="text-primary">Excellence</span>
+      <div className="page-frame">
+        <section className="page-section">
+          <div className="section-shell max-w-6xl">
+            <div className="mb-12 max-w-3xl">
+              <div className="eyebrow">Achievements</div>
+              <h1 className="page-title mt-5">
+                Proof of <span className="text-primary">excellence</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
-                Our members consistently excel in national and international competitions.
+              <p className="page-copy mt-5">
+                Results matter because they show the club can turn learning into performance on national and international stages.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {achievements.map((a, index) => (
-                <div key={index} className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center">
-                  <div className="w-16 h-16 mx-auto rounded-2xl bg-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-all">
+                <div key={index} className="glass-card group relative p-6 text-center transition-all duration-300 hover:-translate-y-1">
+                  <div className="mb-4 mx-auto flex h-16 w-16 items-center justify-center rounded-[1.25rem] bg-blue-500/15 text-blue-300 transition-all group-hover:scale-110">
                     <a.icon className="h-8 w-8 text-primary" />
                   </div>
-                  <div className="inline-flex px-3 py-1 rounded-full text-xs font-bold mb-3 bg-primary text-primary-foreground">{a.place}</div>
-                  <h3 className="text-lg font-bold text-foreground mb-2">{a.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{a.description}</p>
+                  <div className="mb-3 inline-flex rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">{a.place}</div>
+                  <h3 className="mb-2 text-lg font-semibold text-white">{a.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-400">{a.description}</p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );

@@ -1,4 +1,4 @@
-import { FileText, Download, Play, Book, ExternalLink, Users } from "lucide-react";
+import { Download, Play, Book, ExternalLink, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Layout } from "@/components/Layout";
@@ -33,33 +33,34 @@ const levelColors: Record<string, string> = {
 export default function Resources() {
   return (
     <Layout>
-      <div className="min-h-screen">
-        <div className="container mx-auto px-6 py-12">
-          <div className="max-w-5xl mx-auto">
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Learning <span className="text-primary">Resources</span>
+      <div className="page-frame">
+        <section className="page-section">
+          <div className="section-shell max-w-6xl">
+            <div className="mb-12 max-w-3xl">
+              <div className="eyebrow">Resources</div>
+              <h1 className="page-title mt-5">
+                Learning <span className="text-primary">resources</span>
               </h1>
-              <p className="text-lg text-muted-foreground">CAD files, tutorials, and learning materials.</p>
+              <p className="page-copy mt-5">CAD files, tutorials, and learning materials curated for members building across multiple disciplines.</p>
             </div>
 
             <Tabs defaultValue="cad">
-              <TabsList className="grid w-full grid-cols-3 mb-8">
+              <TabsList className="mb-8 grid w-full grid-cols-3 rounded-2xl border border-white/8 bg-white/[0.04] p-1">
                 <TabsTrigger value="cad">CAD Files</TabsTrigger>
                 <TabsTrigger value="tutorials">Tutorials</TabsTrigger>
                 <TabsTrigger value="materials">Materials</TabsTrigger>
               </TabsList>
 
               <TabsContent value="cad">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {cadFiles.map((file, index) => (
-                    <div key={index} className="p-5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all">
+                    <div key={index} className="glass-card p-5">
                       <div className="flex items-start justify-between mb-3">
-                        <h3 className="font-semibold text-foreground">{file.name}</h3>
-                        <Button size="sm" variant="outline" className="rounded-full flex-shrink-0"><Download className="h-4 w-4" /></Button>
+                        <h3 className="font-semibold text-white">{file.name}</h3>
+                        <Button size="sm" variant="outline" className="flex-shrink-0 rounded-full border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.08] hover:text-white"><Download className="h-4 w-4" /></Button>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">{file.description}</p>
-                      <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <p className="mb-3 text-sm text-slate-400">{file.description}</p>
+                      <div className="flex items-center justify-between text-xs text-slate-400">
                         <span>{file.format}</span>
                         <span className="text-primary">{file.downloads} downloads</span>
                       </div>
@@ -69,9 +70,9 @@ export default function Resources() {
               </TabsContent>
 
               <TabsContent value="tutorials">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {tutorials.map((tutorial, index) => (
-                    <div key={index} className="p-5 rounded-xl bg-card border border-border hover:border-primary/30 transition-all">
+                    <div key={index} className="glass-card p-5">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
                           <Play className="h-4 w-4 text-primary" />
@@ -79,9 +80,9 @@ export default function Resources() {
                         </div>
                         <span className="text-xs text-muted-foreground">{tutorial.duration}</span>
                       </div>
-                      <h3 className="font-semibold text-foreground mb-2">{tutorial.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-3">{tutorial.description}</p>
-                      <span className="text-xs text-muted-foreground">{tutorial.lessons} lessons</span>
+                      <h3 className="mb-2 font-semibold text-white">{tutorial.title}</h3>
+                      <p className="mb-3 text-sm text-slate-400">{tutorial.description}</p>
+                      <span className="text-xs text-slate-400">{tutorial.lessons} lessons</span>
                     </div>
                   ))}
                 </div>
@@ -90,18 +91,18 @@ export default function Resources() {
               <TabsContent value="materials">
                 <div className="space-y-4">
                   {materials.map((material, index) => (
-                    <div key={index} className="p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-all flex items-center justify-between">
+                    <div key={index} className="glass-card flex items-center justify-between p-4">
                       <div className="flex items-start gap-3">
                         {material.type === "PDF" ? <Book className="h-5 w-5 text-primary mt-0.5" /> : <ExternalLink className="h-5 w-5 text-primary mt-0.5" />}
                         <div>
-                          <h3 className="font-semibold text-foreground">{material.title}</h3>
-                          <p className="text-sm text-muted-foreground">{material.description}</p>
+                          <h3 className="font-semibold text-white">{material.title}</h3>
+                          <p className="text-sm text-slate-400">{material.description}</p>
                         </div>
                       </div>
                       {material.type === "PDF" ? (
-                        <Button size="sm" variant="outline" className="rounded-full flex-shrink-0">Download</Button>
+                        <Button size="sm" variant="outline" className="rounded-full border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.08] hover:text-white flex-shrink-0">Download</Button>
                       ) : (
-                        <Button size="sm" variant="outline" className="rounded-full flex-shrink-0" asChild>
+                        <Button size="sm" variant="outline" className="rounded-full border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.08] hover:text-white flex-shrink-0" asChild>
                           <a href={material.url} target="_blank" rel="noopener noreferrer">Visit</a>
                         </Button>
                       )}
@@ -111,14 +112,14 @@ export default function Resources() {
               </TabsContent>
             </Tabs>
 
-            <div className="mt-12 p-8 rounded-2xl bg-card border border-border text-center">
-              <Users className="h-12 w-12 mx-auto mb-4 text-primary" />
-              <h4 className="text-xl font-bold text-foreground mb-2">Contribute to Resources</h4>
-              <p className="text-muted-foreground mb-6 max-w-md mx-auto">Share your CAD files, tutorials, or learning materials with the MUBL community.</p>
-              <Button className="bg-primary hover:bg-primary/90 rounded-full px-8">Submit Resources</Button>
+            <div className="mt-12 glass-panel p-8 text-center">
+              <Users className="mx-auto mb-4 h-12 w-12 text-primary" />
+              <h4 className="mb-2 text-xl font-semibold text-white">Contribute to Resources</h4>
+              <p className="mx-auto mb-6 max-w-md text-slate-300">Share your CAD files, tutorials, or learning materials with the MUBL community.</p>
+              <Button className="rounded-full bg-primary px-8 hover:bg-primary/90">Submit Resources</Button>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );

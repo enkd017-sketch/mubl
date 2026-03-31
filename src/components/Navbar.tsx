@@ -6,7 +6,6 @@ import mublLogo from "@/assets/mubl-logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
   { name: "Projects", href: "/projects" },
   { name: "Events", href: "/events" },
   { name: "Achievements", href: "/achievements" },
@@ -20,25 +19,25 @@ export function Navbar() {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={mublLogo} alt="MUBL Logo" className="h-10 w-auto" />
-            <span className="font-bold text-lg text-foreground hidden sm:block">
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+      <div className="container px-4">
+        <div className="flex h-16 items-center justify-between md:h-20">
+          <Link to="/" className="flex items-center gap-3">
+            <img src={mublLogo} alt="MUBL Logo" className="h-10 w-auto rounded-full" />
+            <span className="hidden text-lg font-semibold tracking-[0.18em] text-white sm:block">
               MUBL
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   location.pathname === link.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-primary hover:bg-muted"
+                    ? "bg-white/10 text-white"
+                    : "text-slate-300 hover:bg-white/6 hover:text-white"
                 }`}
               >
                 {link.name}
@@ -47,41 +46,41 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:block">
-            <Button className="gradient-bg glow rounded-full" asChild>
+            <Button className="rounded-full bg-primary px-5 text-primary-foreground shadow-[0_0_24px_rgba(37,99,235,0.35)] hover:bg-primary/90" asChild>
               <Link to="/join">Join MUBL</Link>
             </Button>
           </div>
 
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+            className="rounded-lg p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
-              <X className="h-6 w-6 text-foreground" />
+              <X className="h-6 w-6" />
             ) : (
-              <Menu className="h-6 w-6 text-foreground" />
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>
 
         {isOpen && (
-          <div className="lg:hidden py-4 border-t border-border animate-fade-in">
+          <div className="animate-fade-in border-t border-white/10 py-4 lg:hidden">
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                  className={`rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
                     location.pathname === link.href
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-primary hover:bg-muted"
+                      ? "bg-white/10 text-white"
+                      : "text-slate-300 hover:bg-white/6 hover:text-white"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
-              <Button className="gradient-bg glow mt-2 rounded-full" asChild>
+              <Button className="mt-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90" asChild>
                 <Link to="/join" onClick={() => setIsOpen(false)}>Join MUBL</Link>
               </Button>
             </div>

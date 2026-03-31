@@ -1,38 +1,49 @@
-import { ArrowRight, Users, Rocket, Trophy } from "lucide-react";
+import { ArrowRight, GraduationCap, Rocket, Trophy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import HeroSection from "@/components/ui/hero-section";
+import { AboutSection } from "@/components/AboutSection";
 import { Button } from "@/components/ui/button";
-
-// Import showcase images
-import cansatProject from "@/assets/showcase/cansat-project.png";
-import uzcansat2025 from "@/assets/showcase/uzcansat-2025.png";
+import HeroSection9 from "@/components/ui/hero-section-9";
 import teknofest2025 from "@/assets/showcase/teknofest-2025.png";
 import spacefest2025 from "@/assets/showcase/spacefest-2025.jpg";
 import youngLeaders2025 from "@/assets/showcase/young-leaders-2025.png";
 
-const showcaseImages = [
-  { src: cansatProject, alt: "CanSat Project", label: "CanSat" },
-  { src: uzcansat2025, alt: "UzCanSat 2025 1st Place", label: "UzCanSat 2025" },
-  { src: teknofest2025, alt: "Teknofest 2025", label: "Teknofest 2025" },
-  { src: spacefest2025, alt: "SpaceFest 2025", label: "SpaceFest 2025" },
-  { src: youngLeaders2025, alt: "Young Leaders 2025", label: "Young Leaders 2025" },
+const pathways = [
+  {
+    title: "Competition pipeline",
+    description: "From campus labs to Teknofest and UzCanSat, the club builds under real deadlines and public evaluation.",
+    href: "/achievements",
+  },
+  {
+    title: "Applied projects",
+    description: "Members ship robotics, aerospace, AI, and CAD work that starts in the lab and matures into portfolio-grade output.",
+    href: "/projects",
+  },
+  {
+    title: "Mentorship and events",
+    description: "Workshops, bootcamps, and student-led events create the rhythm that keeps technical growth consistent.",
+    href: "/events",
+  },
+];
+
+const homeStats = [
+  { value: "50+", label: "Active members", icon: <Users className="h-5 w-5" /> },
+  { value: "15+", label: "Projects built", icon: <Rocket className="h-5 w-5" /> },
+  { value: "5+", label: "Competition wins", icon: <Trophy className="h-5 w-5" /> },
 ];
 
 export default function Home() {
   return (
     <Layout>
-      <div className="min-h-screen">
-        <section className="container mx-auto px-6 py-12 lg:py-20">
-          <HeroSection
+      <div className="page-frame">
+        <section className="page-section pb-6 md:pb-8">
+          <HeroSection9
             title={
               <>
-                Research. Build.{" "}
-                <span className="text-primary">Publish.</span>{" "}
-                Lead.
+                Join <span className="text-primary">MUBL</span> in building the next generation of engineering work.
               </>
             }
-            subtitle="From theory to real engineering. MUBL Club actively works on technology competitions, applied research, and building functional prototypes that grow into real products."
+            subtitle="From competition hardware to applied research, MUBL gives students a place to turn technical ambition into real systems, public results, and a sharper engineering mindset."
             actions={[
               {
                 text: "Join Us",
@@ -40,93 +51,88 @@ export default function Home() {
                 variant: "default",
               },
               {
-                text: "Get in Touch",
-                href: "mailto:mubl@newuu.uz",
+                text: "Our Story",
+                href: "#about",
                 variant: "outline",
               },
             ]}
-            stats={[
-              { value: "50+", label: "Active Members", icon: <Users className="h-5 w-5" /> },
-              { value: "15+", label: "Projects Built", icon: <Rocket className="h-5 w-5" /> },
-              { value: "5+", label: "Competition Wins", icon: <Trophy className="h-5 w-5" /> },
-            ]}
-            images={[
-              cansatProject,
-              spacefest2025,
-              uzcansat2025,
-            ]}
+            stats={homeStats}
+            images={[teknofest2025, spacefest2025, youngLeaders2025]}
           />
+        </section>
 
-          {/* What We've Done */}
-          <div className="mb-16 mt-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              What We've Done
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-6">
-              {showcaseImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="relative overflow-hidden rounded-xl border border-primary/30 aspect-[4/3] group"
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                    <span className="text-xs font-medium text-foreground">{image.label}</span>
+        <section className="page-section pt-2">
+          <div className="grid gap-4 md:grid-cols-3">
+            {pathways.map((pathway) => (
+              <Link
+                key={pathway.title}
+                to={pathway.href}
+                className="glass-card group p-6 transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.22em] text-blue-200/70">
+                      Explore
+                    </p>
+                    <h2 className="mt-3 text-xl font-semibold text-white">
+                      {pathway.title}
+                    </h2>
                   </div>
+                  <ArrowRight className="h-5 w-5 text-blue-300 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
-              ))}
-            </div>
-            <div className="flex justify-center">
-              <Button
-                variant="outline"
-                className="rounded-full border-primary/50 px-8 hover:bg-primary/10"
-                asChild
-              >
-                <Link to="/projects">
-                  View Projects
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+                <p className="panel-copy mt-4">{pathway.description}</p>
+              </Link>
+            ))}
           </div>
+        </section>
 
-          {/* Impact Section */}
-          <div className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              <span className="text-primary">Impact</span>
-            </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed max-w-3xl">
-              <p>
-                Our mission is to help students move{" "}
-                <span className="text-foreground font-medium">from theory to real engineering</span>{" "}
-                by working on{" "}
-                <span className="text-foreground font-medium">hands-on projects</span>{" "}
-                that address real-world problems.
-              </p>
-              <p>
-                Through{" "}
-                <span className="text-foreground font-medium">mentorship</span>{" "}
-                and lectures from{" "}
-                <span className="text-foreground font-medium">national</span>{" "}
-                and{" "}
-                <span className="text-foreground font-medium">international</span>{" "}
-                experts, we expose students to global standards
-                and modern engineering practices.
-              </p>
+        <AboutSection />
+
+        <section className="page-section pt-0">
+          <div className="section-shell">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="space-y-4">
+                <div className="eyebrow">Why students stay</div>
+                <h2 className="section-title">
+                  A community that rewards curiosity with real momentum
+                </h2>
+                <p className="page-copy">
+                  MUBL is not a passive club. Members prototype, prepare for competitions, study advanced tooling, and get exposed to the standards they will meet in industry and research.
+                </p>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="glass-card p-6">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
+                    <GraduationCap className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">Mentorship pipeline</h3>
+                  <p className="panel-copy mt-2">
+                    Learn from senior members, invited experts, and competition-driven workflows that push beyond classroom pacing.
+                  </p>
+                </div>
+                <div className="glass-card p-6">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
+                    <Trophy className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">Public outcomes</h3>
+                  <p className="panel-copy mt-2">
+                    The work is designed to leave evidence: prototypes, presentations, event leadership, and competition results.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="mt-6">
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button className="rounded-full bg-primary px-6 hover:bg-primary/90" asChild>
+                <Link to="/join">Apply to MUBL</Link>
+              </Button>
               <Button
                 variant="outline"
-                className="rounded-full border-primary/50 px-8 hover:bg-primary/10"
+                className="rounded-full border-white/10 bg-white/[0.04] px-6 text-white hover:bg-white/[0.08] hover:text-white"
                 asChild
               >
-                <Link to="/about">
-                  Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                <Link to="/projects">See What We Build</Link>
               </Button>
             </div>
           </div>

@@ -1,7 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { 
   Home, 
-  Info, 
   FolderOpen, 
   Calendar, 
   Trophy, 
@@ -32,7 +31,6 @@ import mublWhiteLogo from "@/assets/mubl-white-logo.png";
 
 const mainNavItems = [
   { title: "Home", url: "/", icon: Home },
-  { title: "About", url: "/about", icon: Info },
   { title: "Ideas", url: "/ideas", icon: Send },
   { title: "Projects", url: "/projects", icon: FolderOpen },
   { title: "Events", url: "/events", icon: Calendar },

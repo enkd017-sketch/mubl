@@ -1,4 +1,4 @@
-import { Handshake, Building, GraduationCap, Lightbulb } from "lucide-react";
+import { Building, GraduationCap, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,40 +13,41 @@ const partnershipTypes = [
 export default function Partner() {
   return (
     <Layout>
-      <div className="min-h-screen">
-        <div className="container mx-auto px-6 py-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Partner With <span className="text-primary">MUBL</span>
+      <div className="page-frame">
+        <section className="page-section">
+          <div className="max-w-6xl">
+            <div className="mb-12 max-w-3xl">
+              <div className="eyebrow">Partnerships</div>
+              <h1 className="page-title mt-5">
+                Partner with <span className="text-primary">MUBL</span>
               </h1>
-              <p className="text-lg text-muted-foreground">We welcome collaborations with industry partners, academic institutions, and mentors.</p>
+              <p className="page-copy mt-5">We welcome collaborations with industry partners, academic institutions, and mentors.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="mb-10 grid grid-cols-1 gap-6 md:grid-cols-3">
               {partnershipTypes.map((type, index) => (
-                <div key={index} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all">
-                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
+                <div key={index} className="glass-card p-6">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
                     <type.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-2">{type.title}</h3>
-                  <p className="text-sm text-muted-foreground">{type.description}</p>
+                  <h3 className="mb-2 font-semibold text-white">{type.title}</h3>
+                  <p className="text-sm text-slate-400">{type.description}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-card rounded-2xl border border-border p-6 max-w-lg">
-              <h2 className="text-xl font-bold text-foreground mb-6">Get in Touch</h2>
+            <div className="glass-panel max-w-2xl p-6 md:p-8">
+              <h2 className="mb-6 text-2xl font-semibold text-white">Get in Touch</h2>
               <form className="space-y-4">
-                <div><label className="block text-sm font-medium text-foreground mb-2">Organization Name</label><Input placeholder="Your organization" /></div>
-                <div><label className="block text-sm font-medium text-foreground mb-2">Contact Person</label><Input placeholder="Your name" /></div>
-                <div><label className="block text-sm font-medium text-foreground mb-2">Email</label><Input type="email" placeholder="email@company.com" /></div>
-                <div><label className="block text-sm font-medium text-foreground mb-2">Partnership Interest</label><Textarea placeholder="Tell us about your partnership interest..." rows={4} /></div>
-                <Button className="w-full bg-primary hover:bg-primary/90 rounded-full">Send Message</Button>
+                <div><label className="field-label">Organization Name</label><Input placeholder="Your organization" className="field-input h-14 rounded-2xl" /></div>
+                <div><label className="field-label">Contact Person</label><Input placeholder="Your name" className="field-input h-14 rounded-2xl" /></div>
+                <div><label className="field-label">Email</label><Input type="email" placeholder="email@company.com" className="field-input h-14 rounded-2xl" /></div>
+                <div><label className="field-label">Partnership Interest</label><Textarea placeholder="Tell us about your partnership interest..." rows={5} className="field-input min-h-36 rounded-2xl" /></div>
+                <Button className="w-full rounded-full bg-primary py-6 hover:bg-primary/90">Send Message</Button>
               </form>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );

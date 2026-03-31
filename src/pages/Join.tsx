@@ -1,4 +1,4 @@
-import { UserPlus, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,42 +16,55 @@ const benefits = [
 export default function Join() {
   return (
     <Layout>
-      <div className="min-h-screen">
-        <div className="container mx-auto px-6 py-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      <div className="page-frame">
+        <section className="page-section">
+          <div className="max-w-6xl">
+            <div className="mb-10 max-w-3xl">
+              <div className="eyebrow">Join MUBL</div>
+              <h1 className="page-title mt-5">
                 Join <span className="text-primary">MUBL</span>
               </h1>
-              <p className="text-lg text-muted-foreground">Become part of our engineering community.</p>
+              <p className="page-copy mt-5">Become part of our engineering community.</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">Member Benefits</h2>
-                <ul className="space-y-4">
+            <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+              <div className="order-2 glass-panel p-8 lg:order-1">
+                <h2 className="mb-6 text-2xl font-semibold text-white">Member Benefits</h2>
+                <ul className="space-y-5">
                   {benefits.map((benefit, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span className="text-muted-foreground">{benefit}</span>
+                      <span className="text-lg text-slate-300">{benefit}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="bg-card rounded-2xl border border-border p-6">
-                <h2 className="text-xl font-bold text-foreground mb-6">Application Form</h2>
+              <div className="order-1 glass-panel p-6 md:p-8 lg:order-2">
+                <h2 className="mb-6 text-2xl font-semibold text-white md:text-3xl">Application Form</h2>
                 <form className="space-y-4">
-                  <div><label className="block text-sm font-medium text-foreground mb-2">Full Name</label><Input placeholder="Your name" /></div>
-                  <div><label className="block text-sm font-medium text-foreground mb-2">Email</label><Input type="email" placeholder="you@newuu.uz" /></div>
-                  <div><label className="block text-sm font-medium text-foreground mb-2">Student ID</label><Input placeholder="Your student ID" /></div>
-                  <div><label className="block text-sm font-medium text-foreground mb-2">Why do you want to join MUBL?</label><Textarea placeholder="Tell us about yourself..." rows={4} /></div>
-                  <Button className="w-full bg-primary hover:bg-primary/90 rounded-full">Submit Application</Button>
+                  <div>
+                    <label className="field-label">Full Name</label>
+                    <Input placeholder="Your name" className="field-input h-14 rounded-2xl" />
+                  </div>
+                  <div>
+                    <label className="field-label">Email</label>
+                    <Input type="email" placeholder="you@newuu.uz" className="field-input h-14 rounded-2xl" />
+                  </div>
+                  <div>
+                    <label className="field-label">Student ID</label>
+                    <Input placeholder="Your student ID" className="field-input h-14 rounded-2xl" />
+                  </div>
+                  <div>
+                    <label className="field-label">Why do you want to join MUBL?</label>
+                    <Textarea placeholder="Tell us about yourself..." rows={5} className="field-input min-h-36 rounded-2xl" />
+                  </div>
+                  <Button className="w-full rounded-full bg-primary py-6 text-base hover:bg-primary/90">Submit Application</Button>
                 </form>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );

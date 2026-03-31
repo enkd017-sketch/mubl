@@ -1,84 +1,89 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Mail, MapPin, Send } from "lucide-react";
 import mublLogo from "@/assets/mubl-logo.png";
 
-const quickLinks = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Events", href: "#events" },
-  { name: "Achievements", href: "#achievements" },
-  { name: "Blog", href: "#blog" },
-  { name: "Resources", href: "/resources" },
-];
-
-const socialLinks = [
-  { name: "Instagram", href: "#", icon: "📷" },
-  { name: "Telegram", href: "#", icon: "✈️" },
-  { name: "LinkedIn", href: "#", icon: "💼" },
-  { name: "GitHub", href: "#", icon: "🐙" },
+const navigationColumns = [
+  [
+    { name: "Projects", href: "/projects" },
+    { name: "Events", href: "/events" },
+  ],
+  [
+    { name: "Achievements", href: "/achievements" },
+    { name: "Blog", href: "/blog" },
+    { name: "Resources", href: "/resources" },
+  ],
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="border-t border-blue-300/10 bg-[#071120]/95 text-white">
+      <div className="container px-4 py-16">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_0.9fr_0.9fr]">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div>
             <div className="flex items-center gap-3 mb-4">
               <img src={mublLogo} alt="MUBL Logo" className="h-12 w-auto invert" />
               <div>
                 <h3 className="font-bold text-lg">MUBL</h3>
-                <p className="text-sm opacity-70">Mirzo Ulugh Beg's Legacy</p>
+                <p className="text-sm text-slate-400">Mirzo Ulugh Beg&apos;s Legacy</p>
               </div>
             </div>
-            <p className="opacity-70 max-w-md mb-6 leading-relaxed">
+            <p className="mb-6 max-w-md leading-relaxed text-slate-400">
               A student-led engineering club at New Uzbekistan University. We research, 
               build, publish, and lead in the fields of robotics, AI, and space technology.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="w-10 h-10 rounded-lg bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
-                  aria-label={social.name}
-                >
-                  <span>{social.icon}</span>
-                </a>
-              ))}
+            <div className="rounded-3xl border border-white/8 bg-white/[0.03] p-5">
+              <p className="text-sm uppercase tracking-[0.24em] text-blue-200/70">Mission</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">
+                We turn students into builders through competitions, hands-on research, and mentorship rooted in real engineering practice.
+              </p>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a 
-                    href={link.href}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+            <h4 className="mb-4 font-semibold text-white">Navigation</h4>
+            <div className="grid grid-cols-2 gap-8">
+              {navigationColumns.map((column, columnIndex) => (
+                <ul key={columnIndex} className="space-y-3">
+                  {column.map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        to={link.href}
+                        className="text-slate-400 transition-colors hover:text-white"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Contact */}
           <div>
             <h4 className="font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 opacity-70">
+              <li className="flex items-center gap-3 text-slate-400">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
                 <span>New Uzbekistan University, Tashkent</span>
               </li>
-              <li className="flex items-center gap-3 opacity-70">
+              <li className="flex items-center gap-3 text-slate-400">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <a href="mailto:mubl@newuu.uz" className="hover:opacity-100 transition-opacity">
+                <a href="mailto:mubl@newuu.uz" className="transition-colors hover:text-white">
                   mubl@newuu.uz
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-slate-400">
+                <Send className="h-4 w-4 flex-shrink-0" />
+                <a
+                  href="https://t.me/marvelousacosmos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  Telegram: @marvelousacosmos
                 </a>
               </li>
             </ul>
@@ -86,11 +91,11 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm opacity-50">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center md:flex-row md:text-left">
+          <p className="text-sm text-slate-500">
             © {new Date().getFullYear()} MUBL Club. All rights reserved.
           </p>
-          <p className="text-sm opacity-50">
+          <p className="text-sm text-slate-500">
             Research. Build. Publish. Lead.
           </p>
         </div>

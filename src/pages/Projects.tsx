@@ -27,33 +27,39 @@ const projectAreas = [
 export default function Projects() {
   return (
     <Layout>
-      <div className="min-h-screen">
-        <div className="container mx-auto px-6 py-12">
-          <div className="max-w-5xl mx-auto">
-            <div className="mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                What We <span className="text-primary">Build</span>
+      <div className="page-frame">
+        <section className="page-section">
+          <div className="section-shell max-w-6xl">
+            <div className="mb-12 max-w-3xl">
+              <div className="eyebrow">Projects</div>
+              <h1 className="page-title mt-5">
+                What we <span className="text-primary">build</span>
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                At MUBL, projects are the heart of everything we do.
+              <p className="page-copy mt-5">
+                Projects are the operating system of the club. Members learn by designing, testing, presenting, and improving real technical systems.
               </p>
             </div>
-            <h2 className="text-xl font-semibold text-foreground mb-8">Key Project Areas</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mb-8 flex items-center justify-between gap-4">
+              <h2 className="text-xl font-semibold text-white">Key project areas</h2>
+              <p className="hidden text-sm text-slate-400 md:block">
+                Aerospace, robotics, AI, and rapid prototyping.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {projectAreas.map((project, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-primary" />
+                <div key={index} className="glass-card group relative overflow-hidden p-6 md:p-8">
+                  <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent" />
                   <div className="p-6 md:p-8">
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300 transition-transform group-hover:scale-110">
                         <project.icon className="h-7 w-7 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                        <p className="text-muted-foreground mb-4 leading-relaxed text-sm">{project.description}</p>
+                        <h3 className="mb-3 text-xl font-semibold text-white group-hover:text-blue-200 transition-colors">{project.title}</h3>
+                        <p className="mb-5 text-sm leading-6 text-slate-400">{project.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag, idx) => (
-                            <span key={idx} className="px-3 py-1 text-xs font-medium rounded-full bg-muted text-muted-foreground">{tag}</span>
+                            <span key={idx} className="rounded-full border border-white/8 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300">{tag}</span>
                           ))}
                         </div>
                       </div>
@@ -63,7 +69,7 @@ export default function Projects() {
               ))}
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );

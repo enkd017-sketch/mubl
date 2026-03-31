@@ -1,6 +1,6 @@
-import { Target, Lightbulb, Users, GraduationCap } from "lucide-react";
+import { Globe, Heart, Lightbulb, Target, Users } from "lucide-react";
 
-const features = [
+const coreValues = [
   {
     icon: Target,
     title: "Hands-on Engineering",
@@ -8,85 +8,116 @@ const features = [
   },
   {
     icon: Lightbulb,
-    title: "Applied Research",
-    description: "Collaborate in multidisciplinary teams to solve challenges using robotics, AI, and modern tools.",
+    title: "Innovation",
+    description: "Push boundaries and explore new solutions using modern tools, fast prototyping, and open-ended experimentation.",
   },
   {
     icon: Users,
-    title: "Expert Mentorship",
-    description: "Learn from national and international experts who expose students to global standards.",
+    title: "Collaboration",
+    description: "Work in multidisciplinary teams where software, hardware, design, and research move together.",
   },
   {
-    icon: GraduationCap,
-    title: "Modern Practices",
-    description: "Gain exposure to cutting-edge engineering practices and industry-standard workflows.",
+    icon: Heart,
+    title: "Mentorship",
+    description: "Learn from national and international experts who help students grow into confident builders.",
   },
+];
+
+const timeline = [
+  { year: "2023", title: "Club Founded", description: "MUBL was established at New Uzbekistan University to bridge theory and practice in engineering education." },
+  { year: "2024", title: "First Competition Success", description: "The team entered UzCanSat and secured an early milestone that shaped the club's aerospace direction." },
+  { year: "2024", title: "SpaceFest Launch", description: "MUBL organized SpaceFest and brought together students, engineers, and space enthusiasts across Uzbekistan." },
+  { year: "2025", title: "UzCanSat Champions", description: "The club earned 1st place at UzCanSat 2025, validating its competition pipeline and engineering rigor." },
+  { year: "2025", title: "International Stage", description: "MUBL reached Teknofest in Turkey and the Young Leaders Symposium in Abu Dhabi, expanding its global presence." },
 ];
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <span className="text-sm font-medium text-primary">Who We Are</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-            Building Tomorrow's
-            <span className="gradient-text"> Engineers</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            MUBL Club is a vibrant community at New Uzbekistan University where students 
-            transform innovative ideas into real-world solutions.
-          </p>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <FeatureCard key={index} {...feature} index={index} />
-          ))}
-        </div>
-
-        {/* Mission Statement */}
-        <div className="mt-20 relative">
-          <div className="absolute inset-0 gradient-bg rounded-3xl opacity-10" />
-          <div className="relative p-8 md:p-12 rounded-3xl border border-primary/20 bg-card">
-            <div className="max-w-3xl mx-auto text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                Our Mission
-              </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                To help students move from theory to real engineering by working on hands-on 
-                projects that address real-world problems. Through mentorship and lectures from 
-                national and international experts, we expose students to global standards and 
-                modern engineering practices.
+    <section id="about" className="page-section pt-4 md:pt-8">
+      <div className="section-shell">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.08),transparent_28%)]" />
+        <div className="relative space-y-12">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div className="space-y-5">
+              <div className="eyebrow">About MUBL</div>
+              <h2 className="section-title">
+                Why <span className="text-primary">MUBL</span> exists
+              </h2>
+            </div>
+            <div className="space-y-4 text-slate-300">
+              <p className="page-copy">
+                MUBL, short for Mirzo Ulugh Beg&apos;s Legacy, was founded to honor the region&apos;s scientific heritage while preparing a new generation of engineers through real projects, real competitions, and real mentorship.
               </p>
+              <p className="panel-copy">
+                We believe students learn fastest when they build under pressure, collaborate across disciplines, and present their work on real stages.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="glass-panel p-6 md:p-8">
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
+                  <Globe className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-white">Our Mission</h3>
+                  <p className="text-sm text-slate-400">From theory to real engineering</p>
+                </div>
+              </div>
+              <p className="page-copy max-w-3xl">
+                To help students move from theory to real engineering by working on hands-on projects that address real-world problems, backed by mentorship and exposure to global standards in robotics, AI, aerospace, and modern engineering practice.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {coreValues.map((value) => (
+                <div key={value.title} className="glass-card p-5 md:p-6">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/8 text-blue-300">
+                    <value.icon className="h-5 w-5" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-white">{value.title}</h4>
+                  <p className="panel-copy mt-2">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="glass-panel p-6 md:p-8">
+            <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="eyebrow">Journey</div>
+                <h3 className="mt-4 text-2xl font-semibold text-white md:text-3xl">
+                  A timeline of momentum
+                </h3>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-slate-400">
+                The club has grown through competitions, campus events, and international exposure rather than static club administration.
+              </p>
+            </div>
+
+            <div className="relative space-y-5 before:absolute before:left-[1.35rem] before:top-3 before:h-[calc(100%-1.5rem)] before:w-px before:bg-white/10 md:before:left-[1.55rem]">
+              {timeline.map((item) => (
+                <div
+                  key={`${item.year}-${item.title}`}
+                  className="relative grid gap-4 pl-12 md:grid-cols-[84px_1fr] md:pl-0"
+                >
+                  <div className="absolute left-0 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border border-blue-400/25 bg-blue-500/15 text-[0.65rem] font-semibold tracking-[0.2em] text-blue-200 md:left-[1rem]">
+                    <span className="h-2 w-2 rounded-full bg-blue-200" />
+                  </div>
+                  <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200/70">
+                    {item.year}
+                  </div>
+                  <div className="glass-card p-5">
+                    <h4 className="text-lg font-semibold text-white">{item.title}</h4>
+                    <p className="panel-copy mt-2">{item.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function FeatureCard({ icon: Icon, title, description, index }: { 
-  icon: any; 
-  title: string; 
-  description: string; 
-  index: number;
-}) {
-  return (
-    <div 
-      className="group p-6 rounded-2xl bg-card border border-border card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1"
-      style={{ animationDelay: `${index * 0.1}s` }}
-    >
-      <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:glow transition-shadow">
-        <Icon className="h-6 w-6 text-primary-foreground" />
-      </div>
-      <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
-    </div>
   );
 }
