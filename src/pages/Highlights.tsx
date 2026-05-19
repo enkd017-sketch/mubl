@@ -35,7 +35,7 @@ const spacefestTestimonials: Testimonial[] = [
     name: "Full-day Agenda",
     designation: "October 4 · 12:00 → 18:00",
     quote:
-      "From registration at noon to a Fly Me to the Moon movie night — Zakovat Quiz, Cosmo Day Debate, Art Workshop, Board Games, an interactive coffee break with satellite, telemetry, and robotics stands, and an awards ceremony.",
+      "From registration at noon to the closing awards ceremony — Zakovat Quiz, Cosmo Day Debate, Art Workshop, Board Games, and an interactive coffee break with satellite, telemetry, and robotics stands.",
     src: "/Highlights/Spacefest/DSC02706.JPG",
   },
   {
@@ -56,7 +56,7 @@ const spacefestTestimonials: Testimonial[] = [
     name: "Awards & Community",
     designation: "200+ participants · NewUU",
     quote:
-      "An awards ceremony and a Fly Me to the Moon (2024) movie night closed the day — celebrating the students, mentors, and partners who turned SpaceFest into Uzbekistan's premier space-tech festival.",
+      "An awards ceremony closed the day — celebrating the students, mentors, and partners who turned SpaceFest into Uzbekistan's premier space-tech festival.",
     src: "/Highlights/Spacefest/DSC02942.jpg",
   },
 ];
