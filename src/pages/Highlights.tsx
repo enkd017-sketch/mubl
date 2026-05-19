@@ -69,6 +69,27 @@ const teknofestTestimonials: Testimonial[] = [
       "Competing against international teams at Turkey's largest tech festival, MUBL placed 4th — a milestone result on a global engineering stage.",
     src: teknofest2025,
   },
+  {
+    name: "On the Ground in Türkiye",
+    designation: "Team moments · Teknofest 2025",
+    quote:
+      "From check-in to the competition floor — the MUBL team representing Uzbekistan among the world's top student engineering teams.",
+    src: "/Highlights/Teknofest/IMG-20250918-WA0007.jpg",
+  },
+  {
+    name: "Build & Compete",
+    designation: "Engineering in action · Teknofest 2025",
+    quote:
+      "Final tuning, integration checks, and last-minute fixes — the hands-on engineering work behind a 4th-place international result.",
+    src: "/Highlights/Teknofest/IMG-20250918-WA0037.jpg",
+  },
+  {
+    name: "Team MUBL",
+    designation: "Representing Uzbekistan · Teknofest 2025",
+    quote:
+      "Standing together at one of the world's largest aerospace and technology festivals — the people who made the result possible.",
+    src: "/Highlights/Teknofest/IMG-20250918-WA0057.jpg",
+  },
 ];
 
 const uzcansatTestimonials: Testimonial[] = [
