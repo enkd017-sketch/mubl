@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { ArrowRight, Lightbulb, Users, Trophy, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
@@ -16,6 +17,7 @@ const highlights = [
 ];
 
 export default function Ideas() {
+  usePageMeta({ title: "Submit Your Idea", description: "Have a project idea? Submit it to MUBL and we'll help you build it with a team and resources." });
   return (
     <Layout>
       <div className="page-frame">
@@ -29,7 +31,7 @@ export default function Ideas() {
                   <Lightbulb className="h-4 w-4" />
                   Submit Your Idea
                 </div>
-                <h1 className="page-title mt-5 text-white">
+                <h1 className="page-title mt-5 text-[color:var(--title-color)]">
                   Have a project idea? <span className="text-primary">Let&apos;s build it together.</span>
                 </h1>
                 <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
@@ -39,7 +41,7 @@ export default function Ideas() {
 
               <div className="relative z-10 mb-12 space-y-3">
               {highlights.map((h, i) => (
-                <div key={i} className="flex items-center gap-3 text-white">
+                <div key={i} className="flex items-center gap-3 text-[color:var(--title-color)]">
                   <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
                   <span className="text-lg">{h}</span>
                 </div>
@@ -52,14 +54,14 @@ export default function Ideas() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
                     <b.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-white">{b.title}</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-[color:var(--title-color)]">{b.title}</h3>
                   <p className="text-sm text-slate-300/85">{b.description}</p>
                 </div>
               ))}
             </div>
 
               <div className="relative z-10 rounded-[1.75rem] border border-white/8 bg-white/[0.04] p-8 text-center shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md md:p-12">
-                <h2 className="text-2xl font-semibold text-white md:text-3xl">Submit your project idea</h2>
+                <h2 className="text-2xl font-semibold text-[color:var(--title-color)] md:text-3xl">Submit your project idea</h2>
                 <p className="mx-auto mb-8 mt-4 max-w-xl text-slate-300">Let&apos;s turn your idea into something real together.</p>
                 <Button size="lg" className="rounded-full bg-primary px-8 hover:bg-primary/90" asChild>
                   <a href="https://forms.gle/Ts7cKwWE5yxNi4zt9" target="_blank" rel="noopener noreferrer">

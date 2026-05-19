@@ -20,12 +20,20 @@ export default function NeuralBackground({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Skip animation entirely if user prefers reduced motion
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    // Reduce particles on mobile for better perf
+    const isMobile = window.innerWidth < 768;
+    particleCount = isMobile ? Math.min(particleCount, 200) : particleCount;
 
     let width = container.clientWidth;
     let height = container.clientHeight;

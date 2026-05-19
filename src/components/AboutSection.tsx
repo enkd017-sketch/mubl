@@ -43,7 +43,7 @@ export function AboutSection() {
                   <Globe className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold text-white">Our Mission</h3>
+                  <h3 className="text-2xl font-semibold text-[color:var(--title-color)]">Our Mission</h3>
                   <p className="text-sm text-slate-400">From theory to real engineering</p>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export function AboutSection() {
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/8 text-blue-300">
                     <value.icon className="h-5 w-5" />
                   </div>
-                  <h4 className="text-lg font-semibold text-white">{value.title}</h4>
+                  <h4 className="text-lg font-semibold text-[color:var(--title-color)]">{value.title}</h4>
                   <p className="panel-copy mt-2">{value.description}</p>
                 </div>
               ))}

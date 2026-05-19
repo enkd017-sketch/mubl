@@ -41,6 +41,7 @@ const CtaCard = React.forwardRef<HTMLDivElement, CtaCardProps>(
           <img
             src={imageSrc}
             alt={imageAlt}
+            loading="lazy"
             className="h-56 w-full object-cover object-center md:h-full"
           />
         </div>

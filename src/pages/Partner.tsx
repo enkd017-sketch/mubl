@@ -30,14 +30,14 @@ export default function Partner() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
                     <type.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="mb-2 font-semibold text-white">{type.title}</h3>
+                  <h3 className="mb-2 font-semibold text-[color:var(--title-color)]">{type.title}</h3>
                   <p className="text-sm text-slate-400">{type.description}</p>
                 </div>
               ))}
             </div>
 
             <div className="glass-panel max-w-2xl p-6 md:p-8">
-              <h2 className="mb-6 text-2xl font-semibold text-white">Get in Touch</h2>
+              <h2 className="mb-6 text-2xl font-semibold text-[color:var(--title-color)]">Get in Touch</h2>
               <form className="space-y-4">
                 <div><label className="field-label">Organization Name</label><Input placeholder="Your organization" className="field-input h-14 rounded-2xl" /></div>
                 <div><label className="field-label">Contact Person</label><Input placeholder="Your name" className="field-input h-14 rounded-2xl" /></div>

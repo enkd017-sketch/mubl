@@ -3,14 +3,15 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteLoader } from "@/components/SiteLoader";
+import { AnimatePresence } from "framer-motion";
+import { PageTransition } from "@/components/PageTransition";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Events from "./pages/Events";
-import Achievements from "./pages/Achievements";
-import Blog from "./pages/Blog";
+import Highlights from "./pages/Highlights";
+import Programs from "./pages/Programs";
 import Resources from "./pages/Resources";
 import Ideas from "./pages/Ideas";
 
@@ -19,6 +20,27 @@ import Partner from "./pages/Partner";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+        <Route path="/highlights" element={<PageTransition><Highlights /></PageTransition>} />
+        <Route path="/programs" element={<PageTransition><Programs /></PageTransition>} />
+        <Route path="/events" element={<Navigate to="/highlights" replace />} />
+        <Route path="/achievements" element={<Navigate to="/highlights" replace />} />
+        <Route path="/resources" element={<PageTransition><Resources /></PageTransition>} />
+        <Route path="/ideas" element={<PageTransition><Ideas /></PageTransition>} />
+        <Route path="/join" element={<PageTransition><Join /></PageTransition>} />
+        <Route path="/partner" element={<PageTransition><Partner /></PageTransition>} />
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 const App = () => {
   const [showLoader, setShowLoader] = useState(true);
@@ -34,19 +56,7 @@ const App = () => {
           <Sonner />
           {showLoader && <SiteLoader onComplete={handleLoaderComplete} />}
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/achievements" element={<Achievements />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/ideas" element={<Ideas />} />
-
-              <Route path="/join" element={<Join />} />
-              <Route path="/partner" element={<Partner />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <AnimatedRoutes />
           </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>

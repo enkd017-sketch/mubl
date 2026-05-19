@@ -1,7 +1,9 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { ArrowRight, GraduationCap, Rocket, Trophy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { AboutSection } from "@/components/AboutSection";
+import { PartnersSection } from "@/components/PartnersSection";
 import { Button } from "@/components/ui/button";
 import HeroSection9 from "@/components/ui/hero-section-9";
 import teknofest2025 from "@/assets/showcase/teknofest-2025.png";
@@ -12,7 +14,7 @@ const pathways = [
   {
     title: "Competition pipeline",
     description: "From campus labs to Teknofest and UzCanSat, the club builds under real deadlines and public evaluation.",
-    href: "/achievements",
+    href: "/highlights",
   },
   {
     title: "Applied projects",
@@ -22,7 +24,7 @@ const pathways = [
   {
     title: "Mentorship and events",
     description: "Workshops, bootcamps, and student-led events create the rhythm that keeps technical growth consistent.",
-    href: "/events",
+    href: "/highlights",
   },
 ];
 
@@ -33,6 +35,7 @@ const homeStats = [
 ];
 
 export default function Home() {
+  usePageMeta({ title: "Home", description: "MUBL is a student-led engineering club at New Uzbekistan University. We research, build, publish, and lead in robotics, AI, and space technology." });
   return (
     <Layout>
       <div className="page-frame">
@@ -61,6 +64,8 @@ export default function Home() {
           />
         </section>
 
+        <PartnersSection />
+
         <section className="page-section pt-2">
           <div className="grid gap-4 md:grid-cols-3">
             {pathways.map((pathway) => (
@@ -74,7 +79,7 @@ export default function Home() {
                     <p className="text-xs uppercase tracking-[0.22em] text-blue-200/70">
                       Explore
                     </p>
-                    <h2 className="mt-3 text-xl font-semibold text-white">
+                    <h2 className="mt-3 text-xl font-semibold text-[color:var(--title-color)]">
                       {pathway.title}
                     </h2>
                   </div>
@@ -106,7 +111,7 @@ export default function Home() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
                     <GraduationCap className="h-5 w-5" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">Mentorship pipeline</h3>
+                  <h3 className="text-lg font-semibold text-[color:var(--title-color)]">Mentorship pipeline</h3>
                   <p className="panel-copy mt-2">
                     Learn from senior members, invited experts, and competition-driven workflows that push beyond classroom pacing.
                   </p>
@@ -115,7 +120,7 @@ export default function Home() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
                     <Trophy className="h-5 w-5" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">Public outcomes</h3>
+                  <h3 className="text-lg font-semibold text-[color:var(--title-color)]">Public outcomes</h3>
                   <p className="panel-copy mt-2">
                     The work is designed to leave evidence: prototypes, presentations, event leadership, and competition results.
                   </p>
@@ -129,7 +134,7 @@ export default function Home() {
               </Button>
               <Button
                 variant="outline"
-                className="rounded-full border-white/10 bg-white/[0.04] px-6 text-white hover:bg-white/[0.08] hover:text-white"
+                className="rounded-full border-[color:var(--surface-border)] bg-[color:var(--surface-bg)] px-6 text-[color:var(--title-color)] hover:bg-[color:var(--surface-bg-strong)] hover:text-[color:var(--title-color)]"
                 asChild
               >
                 <Link to="/projects">See What We Build</Link>

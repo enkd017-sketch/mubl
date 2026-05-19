@@ -1,11 +1,11 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { 
-  Home, 
-  FolderOpen, 
-  Calendar, 
-  Trophy, 
-  BookOpen, 
-  FileText, 
+import {
+  Home,
+  FolderOpen,
+  Sparkles,
+  Rocket,
+  BookOpen,
+  FileText,
   Linkedin,
   Globe,
   PanelLeftClose,
@@ -33,8 +33,8 @@ const mainNavItems = [
   { title: "Home", url: "/", icon: Home },
   { title: "Ideas", url: "/ideas", icon: Send },
   { title: "Projects", url: "/projects", icon: FolderOpen },
-  { title: "Events", url: "/events", icon: Calendar },
-  { title: "Achievements", url: "/achievements", icon: Trophy },
+  { title: "Programs", url: "/programs", icon: Rocket },
+  { title: "Highlights", url: "/highlights", icon: Sparkles },
   { title: "Blog", url: "/blog", icon: BookOpen },
   { title: "Resources", url: "/resources", icon: FileText },
 ];

@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { Brain, Boxes } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import NeuralBackground from "@/components/ui/flow-field-background";
@@ -38,6 +39,7 @@ const projectAreas = [
 ];
 
 export default function Projects() {
+  usePageMeta({ title: "Projects", description: "Explore MUBL's project areas: CanSat systems, robotics, AI engineering, and 3D design." });
   return (
     <Layout>
       <div className="page-frame">
@@ -54,7 +56,7 @@ export default function Projects() {
 
             <div className="relative z-10 mb-12 max-w-3xl">
               <div className="eyebrow border-blue-300/20 bg-blue-500/10 text-blue-100/80">Projects</div>
-              <h1 className="page-title mt-5 text-white">
+              <h1 className="page-title mt-5 text-[color:var(--title-color)]">
                 What we <span className="text-primary">build</span>
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
@@ -63,7 +65,7 @@ export default function Projects() {
             </div>
 
             <div className="relative z-10 mb-8 flex items-center justify-between gap-4">
-              <h2 className="text-xl font-semibold text-white">Key project areas</h2>
+              <h2 className="text-xl font-semibold text-[color:var(--title-color)]">Key project areas</h2>
               <p className="hidden text-sm text-slate-400 md:block">
                 Aerospace, robotics, AI, and rapid prototyping.
               </p>
@@ -92,7 +94,7 @@ export default function Projects() {
                       <project.icon className="h-7 w-7 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="mb-3 text-xl font-semibold text-white transition-colors group-hover:text-blue-200">{project.title}</h3>
+                      <h3 className="mb-3 text-xl font-semibold text-[color:var(--title-color)] transition-colors group-hover:text-blue-200">{project.title}</h3>
                       <p className="mb-5 text-sm leading-6 text-slate-300/85">{project.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag, idx) => (

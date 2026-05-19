@@ -332,6 +332,9 @@ function useShaderBackground() {
   const pointersRef = useRef<PointerTracker | null>(null);
 
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 

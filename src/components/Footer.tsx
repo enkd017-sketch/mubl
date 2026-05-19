@@ -5,13 +5,13 @@ import mublLogo from "@/assets/mubl-logo.png";
 const navigationColumns = [
   [
     { name: "Projects", href: "/projects" },
-    { name: "Events", href: "/events" },
-    { name: "Ideas", href: "/ideas" },
+    { name: "Programs", href: "/programs" },
+    { name: "Highlights", href: "/highlights" },
   ],
   [
-    { name: "Achievements", href: "/achievements" },
-    { name: "Blog", href: "/blog" },
+    { name: "Ideas", href: "/ideas" },
     { name: "Resources", href: "/resources" },
+    { name: "Join", href: "/join" },
   ],
 ];
 
@@ -62,7 +62,14 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-slate-400">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                <span>New Uzbekistan University, Tashkent</span>
+                <a
+                  href="https://yandex.com/maps/-/CPs1VIn5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  <span>New Uzbekistan University, Tashkent</span>
+                </a>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <Mail className="h-4 w-4 flex-shrink-0" />
@@ -78,7 +85,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-white"
                 >
-                  Telegram: @marvelousacosmos
+                  @marvelousacosmos
                 </a>
               </li>
             </ul>

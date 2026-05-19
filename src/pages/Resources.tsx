@@ -1,3 +1,4 @@
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { Download, Play, Book, ExternalLink, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -31,6 +32,7 @@ const levelColors: Record<string, string> = {
 };
 
 export default function Resources() {
+  usePageMeta({ title: "Resources", description: "CAD files, tutorials, and learning materials curated for MUBL members." });
   return (
     <Layout>
       <div className="page-frame">
@@ -56,8 +58,8 @@ export default function Resources() {
                   {cadFiles.map((file, index) => (
                     <div key={index} className="glass-card p-5">
                       <div className="flex items-start justify-between mb-3">
-                        <h3 className="font-semibold text-white">{file.name}</h3>
-                        <Button size="sm" variant="outline" className="flex-shrink-0 rounded-full border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.08] hover:text-white"><Download className="h-4 w-4" /></Button>
+                        <h3 className="font-semibold text-[color:var(--title-color)]">{file.name}</h3>
+                        <Button size="sm" variant="outline" className="flex-shrink-0 rounded-full border-[color:var(--surface-border)] bg-[color:var(--surface-bg)] text-[color:var(--title-color)] hover:bg-[color:var(--surface-bg-strong)] hover:text-[color:var(--title-color)]"><Download className="h-4 w-4" /></Button>
                       </div>
                       <p className="mb-3 text-sm text-slate-400">{file.description}</p>
                       <div className="flex items-center justify-between text-xs text-slate-400">
@@ -80,7 +82,7 @@ export default function Resources() {
                         </div>
                         <span className="text-xs text-muted-foreground">{tutorial.duration}</span>
                       </div>
-                      <h3 className="mb-2 font-semibold text-white">{tutorial.title}</h3>
+                      <h3 className="mb-2 font-semibold text-[color:var(--title-color)]">{tutorial.title}</h3>
                       <p className="mb-3 text-sm text-slate-400">{tutorial.description}</p>
                       <span className="text-xs text-slate-400">{tutorial.lessons} lessons</span>
                     </div>
@@ -95,14 +97,14 @@ export default function Resources() {
                       <div className="flex items-start gap-3">
                         {material.type === "PDF" ? <Book className="h-5 w-5 text-primary mt-0.5" /> : <ExternalLink className="h-5 w-5 text-primary mt-0.5" />}
                         <div>
-                          <h3 className="font-semibold text-white">{material.title}</h3>
+                          <h3 className="font-semibold text-[color:var(--title-color)]">{material.title}</h3>
                           <p className="text-sm text-slate-400">{material.description}</p>
                         </div>
                       </div>
                       {material.type === "PDF" ? (
-                        <Button size="sm" variant="outline" className="rounded-full border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.08] hover:text-white flex-shrink-0">Download</Button>
+                        <Button size="sm" variant="outline" className="rounded-full border-[color:var(--surface-border)] bg-[color:var(--surface-bg)] text-[color:var(--title-color)] hover:bg-[color:var(--surface-bg-strong)] hover:text-[color:var(--title-color)] flex-shrink-0">Download</Button>
                       ) : (
-                        <Button size="sm" variant="outline" className="rounded-full border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.08] hover:text-white flex-shrink-0" asChild>
+                        <Button size="sm" variant="outline" className="rounded-full border-[color:var(--surface-border)] bg-[color:var(--surface-bg)] text-[color:var(--title-color)] hover:bg-[color:var(--surface-bg-strong)] hover:text-[color:var(--title-color)] flex-shrink-0" asChild>
                           <a href={material.url} target="_blank" rel="noopener noreferrer">Visit</a>
                         </Button>
                       )}
@@ -114,7 +116,7 @@ export default function Resources() {
 
             <div className="mt-12 glass-panel p-8 text-center">
               <Users className="mx-auto mb-4 h-12 w-12 text-primary" />
-              <h4 className="mb-2 text-xl font-semibold text-white">Contribute to Resources</h4>
+              <h4 className="mb-2 text-xl font-semibold text-[color:var(--title-color)]">Contribute to Resources</h4>
               <p className="mx-auto mb-6 max-w-md text-slate-300">Share your CAD files, tutorials, or learning materials with the MUBL community.</p>
               <Button className="rounded-full bg-primary px-8 hover:bg-primary/90">Submit Resources</Button>
             </div>

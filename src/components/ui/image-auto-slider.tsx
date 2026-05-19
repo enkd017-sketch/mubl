@@ -45,7 +45,7 @@ export function ImageAutoSlider({ items, className }: ImageAutoSliderProps) {
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
             <div className="eyebrow !mb-0">Event gallery</div>
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
+            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--title-color)]">
               Lab sessions, talks, and workshops
             </h3>
           </div>
