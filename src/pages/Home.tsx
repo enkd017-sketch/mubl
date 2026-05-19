@@ -88,6 +88,11 @@ export default function Home() {
                 variant: "default",
               },
               {
+                text: "Join as Partner",
+                href: "/partner/apply",
+                variant: "outline",
+              },
+              {
                 text: "Our Story",
                 href: "#about",
                 variant: "outline",

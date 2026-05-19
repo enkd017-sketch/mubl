@@ -17,6 +17,8 @@ import Ideas from "./pages/Ideas";
 
 import Join from "./pages/Join";
 import Partner from "./pages/Partner";
+import PartnerApply from "./pages/PartnerApply";
+import Articles from "./pages/Articles";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +38,8 @@ function AnimatedRoutes() {
         <Route path="/ideas" element={<PageTransition><Ideas /></PageTransition>} />
         <Route path="/join" element={<PageTransition><Join /></PageTransition>} />
         <Route path="/partner" element={<PageTransition><Partner /></PageTransition>} />
+        <Route path="/partner/apply" element={<PageTransition><PartnerApply /></PageTransition>} />
+        <Route path="/articles" element={<PageTransition><Articles /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

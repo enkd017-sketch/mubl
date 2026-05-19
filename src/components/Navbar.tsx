@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Projects", href: "/projects" },
   { name: "Programs", href: "/programs" },
   { name: "Highlights", href: "/highlights" },
+  { name: "Articles", href: "/articles", badge: "Soon" },
   { name: "Resources", href: "/resources" },
   { name: "Ideas", href: "/ideas" },
 ];
@@ -54,13 +55,18 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     location.pathname === link.href
                       ? "bg-primary/10 text-foreground"
                       : "text-foreground/75 hover:bg-muted hover:text-foreground"
                   }`}
                 >
                   {link.name}
+                  {link.badge && (
+                    <span className="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                      {link.badge}
+                    </span>
+                  )}
                 </Link>
               ))}
             </div>
@@ -119,14 +125,19 @@ export function Navbar() {
                   >
                     <Link
                       to={link.href}
-                      className={`block rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
+                      className={`flex items-center justify-between gap-2 rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
                         location.pathname === link.href
                           ? "bg-primary/10 text-foreground"
                           : "text-foreground/75 hover:bg-muted hover:text-foreground"
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
-                      {link.name}
+                      <span>{link.name}</span>
+                      {link.badge && (
+                        <span className="rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                          {link.badge}
+                        </span>
+                      )}
                     </Link>
                   </motion.div>
                 ))}

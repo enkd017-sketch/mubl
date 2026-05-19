@@ -1,7 +1,6 @@
-import { Building, GraduationCap, Lightbulb } from "lucide-react";
+import { ArrowRight, Building, GraduationCap, Lightbulb } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Layout } from "@/components/Layout";
 
 const partnershipTypes = [
@@ -37,14 +36,16 @@ export default function Partner() {
             </div>
 
             <div className="glass-panel max-w-2xl p-6 md:p-8">
-              <h2 className="mb-6 text-2xl font-semibold text-[color:var(--title-color)]">Get in Touch</h2>
-              <form className="space-y-4">
-                <div><label className="field-label">Organization Name</label><Input placeholder="Your organization" className="field-input h-14 rounded-2xl" /></div>
-                <div><label className="field-label">Contact Person</label><Input placeholder="Your name" className="field-input h-14 rounded-2xl" /></div>
-                <div><label className="field-label">Email</label><Input type="email" placeholder="email@company.com" className="field-input h-14 rounded-2xl" /></div>
-                <div><label className="field-label">Partnership Interest</label><Textarea placeholder="Tell us about your partnership interest..." rows={5} className="field-input min-h-36 rounded-2xl" /></div>
-                <Button className="w-full rounded-full bg-primary py-6 hover:bg-primary/90">Send Message</Button>
-              </form>
+              <h2 className="mb-3 text-2xl font-semibold text-[color:var(--title-color)]">Ready to collaborate?</h2>
+              <p className="panel-copy mb-6">
+                Fill out the partnership application form and our team will get back to you with the next steps.
+              </p>
+              <Button className="rounded-full bg-primary px-6 py-6 hover:bg-primary/90" asChild>
+                <Link to="/partner/apply">
+                  Apply for Partnership
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
