@@ -19,10 +19,6 @@ export function PartnersSection() {
       </div>
 
       <div className="relative overflow-hidden">
-        {/* Fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[hsl(222,47%,11%)] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[hsl(222,47%,11%)] to-transparent" />
-
         <div className="flex animate-scroll-partners">
           {items.map((partner, i) => (
             <div
@@ -33,7 +29,7 @@ export function PartnersSection() {
                 src={partner.logo}
                 alt={partner.name}
                 loading="lazy"
-                className="h-12 w-auto max-w-[160px] object-contain brightness-0 invert opacity-60 transition-opacity duration-300 hover:opacity-100"
+                className="h-12 w-auto max-w-[160px] object-contain opacity-80 mix-blend-multiply transition-opacity duration-300 hover:opacity-100 dark:mix-blend-normal dark:brightness-0 dark:invert dark:opacity-60 dark:hover:opacity-100"
               />
             </div>
           ))}
