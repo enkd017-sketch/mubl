@@ -12,10 +12,34 @@ const cadFiles = [
 ];
 
 const tutorials = [
-  { title: "Introduction to CanSat Development", description: "Complete guide to building your first CanSat", duration: "2h 30min", level: "Beginner", lessons: 12 },
-  { title: "ROS2 for Robotics", description: "Learn Robot Operating System 2 for autonomous robots", duration: "4h 15min", level: "Intermediate", lessons: 18 },
-  { title: "Machine Learning with TensorFlow", description: "Build and deploy ML models for engineering", duration: "3h 45min", level: "Intermediate", lessons: 15 },
-  { title: "PCB Design with KiCad", description: "Design professional PCBs from schematic to manufacturing", duration: "2h 00min", level: "Beginner", lessons: 10 },
+  {
+    title: "Where Robotics meets Artificial Intelligence",
+    description: "Lead the frontier of autonomous decision-making with Pieter Abbeel, mastering the Reinforcement Learning and Optimization algorithms that give robots a \"brain\" of their own.",
+    instructor: "Pieter Abbeel · UC Berkeley",
+    level: "Advanced",
+    url: "https://youtube.com/playlist?list=PLwRJQ4m4UJjNBPJdt8WamRAt4XKc639wF",
+  },
+  {
+    title: "Engineering agility through physics",
+    description: "Russ Tedrake reveals how to control complex, nonlinear systems, teaching you to design robots that move with the grace and efficiency of living creatures.",
+    instructor: "Russ Tedrake · MIT",
+    level: "Advanced",
+    url: "https://youtube.com/playlist?list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s",
+  },
+  {
+    title: "Master the mechanics of precision",
+    description: "Learn the \"Industrial Gold Standard\" from Oussama Khatib, focusing on the kinematics and dynamics required to build the robotic arms that power modern medicine and manufacturing.",
+    instructor: "Oussama Khatib · Stanford CS223A",
+    level: "Intermediate",
+    url: "https://see.stanford.edu/Course/CS223A/33",
+  },
+  {
+    title: "Introduction to Robotics",
+    description: "Guided by Ani Majumdar, this beginner-friendly course bridges the gap between basic code and real-world drone flight — the perfect starting point for any aspiring roboticist.",
+    instructor: "Ani Majumdar · Princeton",
+    level: "Beginner",
+    url: "https://irom-lab.princeton.edu/intro-to-robotics/",
+  },
 ];
 
 const materials = [
@@ -74,18 +98,24 @@ export default function Resources() {
               <TabsContent value="tutorials">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {tutorials.map((tutorial, index) => (
-                    <div key={index} className="glass-card p-5">
+                    <a
+                      key={index}
+                      href={tutorial.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="glass-card group flex flex-col p-5 transition-colors hover:bg-[color:var(--surface-bg-strong)]"
+                    >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
                           <Play className="h-4 w-4 text-primary" />
                           <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${levelColors[tutorial.level]}`}>{tutorial.level}</span>
                         </div>
-                        <span className="text-xs text-muted-foreground">{tutorial.duration}</span>
+                        <ExternalLink className="h-4 w-4 text-slate-400 transition-colors group-hover:text-primary" />
                       </div>
                       <h3 className="mb-2 font-semibold text-[color:var(--title-color)]">{tutorial.title}</h3>
                       <p className="mb-3 text-sm text-slate-400">{tutorial.description}</p>
-                      <span className="text-xs text-slate-400">{tutorial.lessons} lessons</span>
-                    </div>
+                      <span className="mt-auto text-xs text-primary">{tutorial.instructor}</span>
+                    </a>
                   ))}
                 </div>
               </TabsContent>
