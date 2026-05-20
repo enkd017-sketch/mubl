@@ -2,73 +2,8 @@ import { usePageMeta } from "@/hooks/use-page-meta";
 import { Layout } from "@/components/Layout";
 import NeuralBackground from "@/components/ui/flow-field-background";
 import { NewsCards, type NewsCard } from "@/components/ui/news-cards";
-import cansatProjectImage from "@/assets/showcase/cansat-project.png";
-import roboticsCompetitionImage from "@/assets/gallery/robotics-competition.jpg";
-import roboticsAiImage from "@/assets/events/robotics&ai.jpg";
-import workshop3dImage from "@/assets/events/3D_workshop.jpg";
 
-const projectCards: NewsCard[] = [
-  {
-    id: "cansat",
-    title: "CanSat Systems",
-    category: "Aerospace",
-    subcategory: "Satellite Systems",
-    timeAgo: "Competition track",
-    location: "MUBL",
-    image: cansatProjectImage,
-    gradientColors: ["from-orange-500/30", "to-red-500/20"],
-    content: [
-      "Design and build miniature satellites for atmospheric research and space technology competitions. Members work end-to-end — from mission profile and structural design to telemetry, recovery, and the final competition presentation.",
-      "The track mirrors real space-engineering workflows: defining requirements, integrating sensors and microcontrollers, validating the system under deadline pressure, and defending the design before judges.",
-      "It is the same pipeline that took MUBL to a 1st-place finish at the national UzCanSat competition — a proving ground for systems thinking and hands-on hardware skill.",
-    ],
-  },
-  {
-    id: "robotics",
-    title: "Robotics & Autonomous Systems",
-    category: "Robotics",
-    subcategory: "Autonomous Systems",
-    timeAgo: "Build track",
-    location: "MUBL",
-    image: roboticsCompetitionImage,
-    gradientColors: ["from-blue-500/30", "to-cyan-500/20"],
-    content: [
-      "Create intelligent robots and autonomous vehicles for a range of applications — from control systems and motion planning to embedded prototyping and sensor fusion.",
-      "Members move from breadboard experiments to competition-grade builds, learning the control logic, integration, and debugging discipline that real autonomous systems demand.",
-      "This track feeds directly into MUBL's competition work, including its international showing at Teknofest, where the team placed 4th among global student engineering teams.",
-    ],
-  },
-  {
-    id: "ai",
-    title: "AI-Driven Engineering Solutions",
-    category: "Artificial Intelligence",
-    subcategory: "Applied Machine Learning",
-    timeAgo: "Research track",
-    location: "MUBL",
-    image: roboticsAiImage,
-    gradientColors: ["from-violet-500/30", "to-fuchsia-500/20"],
-    content: [
-      "Develop machine learning models and AI applications that solve real engineering challenges — spanning computer vision, natural language processing, and deep learning.",
-      "Members frame problems, build and train models, and deploy them into working prototypes, learning how AI integrates with the hardware and systems built across the other tracks.",
-      "The focus is applied research: turning state-of-the-art techniques into tools that make MUBL's robotics, aerospace, and design work measurably better.",
-    ],
-  },
-  {
-    id: "3d-design",
-    title: "3D Design & CAD-Based Development",
-    category: "Design",
-    subcategory: "CAD & Prototyping",
-    timeAgo: "Maker track",
-    location: "MUBL",
-    image: workshop3dImage,
-    gradientColors: ["from-emerald-500/30", "to-teal-500/20"],
-    content: [
-      "Master 3D modeling and CAD-based hardware development for rapid prototyping — translating ideas into printable, testable parts.",
-      "Members learn parametric design, tolerancing, and the print-and-iterate loop that turns a sketch into a functional component in hours instead of weeks.",
-      "It is the connective tissue of the club: the enclosures, mounts, and mechanisms that make the CanSat, robotics, and AI projects physically real.",
-    ],
-  },
-];
+const projectCards: NewsCard[] = [];
 
 export default function Projects() {
   usePageMeta({ title: "Projects", description: "Explore MUBL's project areas: CanSat systems, robotics, AI engineering, and 3D design." });
