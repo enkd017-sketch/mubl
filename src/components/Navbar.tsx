@@ -10,7 +10,6 @@ import mublWhiteLogo from "@/assets/mubl-white-logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
   { name: "Programs", href: "/programs" },
   { name: "Highlights", href: "/highlights" },
   { name: "Articles", href: "/articles", badge: "Soon" },
