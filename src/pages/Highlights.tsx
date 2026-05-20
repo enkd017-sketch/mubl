@@ -61,6 +61,51 @@ const spacefestTestimonials: Testimonial[] = [
   },
 ];
 
+const cosmonauticsTestimonials: Testimonial[] = [
+  {
+    name: "Cosmonautics Day",
+    designation: "Organizer · Biggest space-tech event yet",
+    quote:
+      "The biggest space-tech event in the history of Mirzo Ulugh Beg's Legacy — in collaboration with New Uzbekistan University and Uzcosmos. MUBL hosted Cosmonautics Day with nearly 300 students attending throughout the day.",
+    src: "/Highlights/Cosmonautics/participants.jpg",
+  },
+  {
+    name: "A Full-Scale Space Hub",
+    designation: "Conference hall · NewUU",
+    quote:
+      "The conference hall transformed into a full-scale space hub. From creative and tech zones to chess battles, board games, VR experiences, and interactive stations — every corner invited exploration.",
+    src: "/Highlights/Cosmonautics/robo_zone.jpg",
+  },
+  {
+    name: "VR & Interactive Zones",
+    designation: "Hands-on stations · Try something new",
+    quote:
+      "VR zones, board games, and interactive stations let everyone try something new — an atmosphere filled with discovery, collaboration, and inspiration.",
+    src: "/Highlights/Cosmonautics/VR_zone.jpg",
+  },
+  {
+    name: "Talks & Guest Speakers",
+    designation: "Uzcosmos representatives · NewUU professors",
+    quote:
+      "The highlight was talks from representatives of Uzcosmos and our professors, who brought real-world space insights. Students from other universities and schools joined as guests — including special guest Nigel L. from Freshman Academy.",
+    src: "/Highlights/Cosmonautics/Guest_Speaker.jpg",
+  },
+  {
+    name: "Discovery & Collaboration",
+    designation: "Students across universities and schools",
+    quote:
+      "Discussions and shared exploration carried the day, as students from across universities and schools collaborated and traded ideas throughout the space hub.",
+    src: "/Highlights/Cosmonautics/discussion.jpg",
+  },
+  {
+    name: "Awards & Recognition",
+    designation: "25 outstanding participants",
+    quote:
+      "By the end of the event, 25 outstanding participants were recognized with presents, Skillbox course certificates, and official certificates from Uzcosmos.",
+    src: "/Highlights/Cosmonautics/awards.jpg",
+  },
+];
+
 const teknofestTestimonials: Testimonial[] = [
   {
     name: "Teknofest 2025",
@@ -259,6 +304,14 @@ export default function Highlights() {
               title="Space Fest 2025"
               highlightWord="Fest"
               testimonials={spacefestTestimonials}
+              colors={carouselColors}
+            />
+
+            <HighlightSection
+              eyebrow="Cosmonautics Day · Organizer"
+              title="Cosmonautics Day"
+              highlightWord="Cosmonautics"
+              testimonials={cosmonauticsTestimonials}
               colors={carouselColors}
             />
 

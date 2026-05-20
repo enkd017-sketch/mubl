@@ -10,20 +10,21 @@ const partners = [
   { name: "PIIMA", logo: "/Partners/ptma.svg" },
 ];
 
-// Duplicate for seamless infinite scroll
-const items = [...partners, ...partners];
+// Repeat the set so the track stays wider than the viewport and the -50%
+// keyframe (one half of the track) lands on an identical copy for a seamless loop.
+const items = [...partners, ...partners, ...partners, ...partners];
 
 export function PartnersSection() {
   return (
     <section className="page-section py-8 md:py-10">
       <div className="mb-6 text-center">
-        <p className="text-xs uppercase tracking-[0.22em] text-blue-200/70">
+        <p className="text-base font-bold uppercase tracking-[0.22em] text-blue-700 dark:text-white md:text-lg">
           Partners
         </p>
       </div>
 
       <div className="relative overflow-hidden">
-        <div className="flex animate-scroll-partners">
+        <div className="flex w-max animate-scroll-partners">
           {items.map((partner, i) => (
             <div
               key={`${partner.name}-${i}`}

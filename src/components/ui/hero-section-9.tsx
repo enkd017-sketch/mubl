@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import ParticleEffectForHero from "@/components/ui/particle-effect-for-hero";
+import { ImageCursorTrail } from "@/components/ui/image-cursor-trail";
 import { cn } from "@/lib/utils";
 
 interface StatProps {
@@ -23,7 +24,7 @@ interface HeroSectionProps {
   title: React.ReactNode;
   subtitle: string;
   actions: ActionProps[];
-  stats: StatProps[];
+  stats?: StatProps[];
   images: string[];
   className?: string;
 }
@@ -163,73 +164,46 @@ export default function HeroSection9({
             {actions.map(renderAction)}
           </motion.div>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-x-8 gap-y-5 pt-2"
-          >
-            {stats.map((stat, index) => (
-              <div
-                key={`${stat.label}-${index}`}
-                className="flex min-w-[180px] items-center gap-4"
-              >
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[color:var(--surface-border)] bg-white/30 text-blue-700 backdrop-blur-sm dark:border-white/8 dark:bg-black/20 dark:text-blue-200">
-                  {stat.icon}
-                </div>
-                <div className="space-y-0.5">
-                  <div className="text-3xl font-semibold tracking-tight text-[color:var(--title-color)] md:text-[2rem]">
-                    {stat.value}
+          {stats && stats.length > 0 && (
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-x-8 gap-y-5 pt-2"
+            >
+              {stats.map((stat, index) => (
+                <div
+                  key={`${stat.label}-${index}`}
+                  className="flex min-w-[180px] items-center gap-4"
+                >
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[color:var(--surface-border)] bg-white/30 text-blue-700 backdrop-blur-sm dark:border-white/8 dark:bg-black/20 dark:text-blue-200">
+                    {stat.icon}
                   </div>
-                  <div className="text-base text-[color:var(--copy-muted)]">{stat.label}</div>
+                  <div className="space-y-0.5">
+                    <div className="text-3xl font-semibold tracking-tight text-[color:var(--title-color)] md:text-[2rem]">
+                      {stat.value}
+                    </div>
+                    <div className="text-base text-[color:var(--copy-muted)]">{stat.label}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </motion.div>
+          )}
         </div>
 
-        <div className="relative hidden min-h-[520px] lg:block">
-          <motion.div
-            variants={imageVariants}
-            whileHover={{ scale: 1.035, y: -6 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="group absolute right-0 top-0 h-[320px] w-[72%] cursor-pointer overflow-hidden rounded-[2rem] border border-[color:var(--surface-border)] bg-white/40 shadow-2xl transition-shadow duration-300 hover:shadow-[0_32px_90px_rgba(15,23,42,0.24)] dark:border-white/10 dark:bg-slate-950/50 dark:hover:shadow-[0_32px_90px_rgba(2,6,23,0.62)]"
-          >
-            <img
-              src={images[0]}
-              alt=""
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </motion.div>
+        <motion.div
+          variants={imageVariants}
+          className="relative hidden min-h-[520px] lg:block"
+        >
+          <ImageCursorTrail
+            items={images}
+            maxNumberOfImages={5}
+            distance={25}
+            fadeAnimation
+            imgClass="w-44 h-56 shadow-2xl"
+            className="h-full min-h-[520px] w-full rounded-[2rem]"
+          />
 
-          <motion.div
-            variants={imageVariants}
-            whileHover={{ scale: 1.035 }}
-            className="group absolute bottom-0 right-[9%] h-[250px] w-[58%] cursor-pointer overflow-hidden rounded-[2rem] border border-[color:var(--surface-border)] bg-white/40 shadow-2xl transition-shadow duration-300 hover:shadow-[0_32px_90px_rgba(15,23,42,0.24)] dark:border-white/10 dark:bg-slate-950/50 dark:hover:shadow-[0_32px_90px_rgba(2,6,23,0.62)]"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <img
-              src={images[1]}
-              alt=""
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </motion.div>
-
-          <motion.div
-            variants={imageVariants}
-            whileHover={{ scale: 1.035, y: -6 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="group absolute left-0 top-[34%] h-[280px] w-[43%] cursor-pointer overflow-hidden rounded-[2rem] border border-[color:var(--surface-border)] bg-white/40 shadow-2xl transition-shadow duration-300 hover:shadow-[0_32px_90px_rgba(15,23,42,0.24)] dark:border-white/10 dark:bg-slate-950/50 dark:hover:shadow-[0_32px_90px_rgba(2,6,23,0.62)]"
-          >
-            <img
-              src={images[2]}
-              alt=""
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </motion.div>
-
-          <div className="absolute left-10 top-8 h-20 w-20 rounded-full border border-blue-300/15 bg-blue-400/10 blur-2xl" />
-          <div className="absolute bottom-10 left-8 h-px w-28 bg-gradient-to-r from-transparent via-blue-400/45 to-transparent dark:via-blue-300/50" />
-        </div>
+          <div className="pointer-events-none absolute left-10 top-8 h-20 w-20 rounded-full border border-blue-300/15 bg-blue-400/10 blur-2xl" />
+        </motion.div>
       </motion.div>
     </section>
   );

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Linkedin, Mail, MapPin, Send } from "lucide-react";
 import mublLogo from "@/assets/mubl-logo.png";
 
 const navigationColumns = [
@@ -86,6 +86,17 @@ export function Footer() {
                   className="transition-colors hover:text-white"
                 >
                   @marvelousacosmos
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-slate-400">
+                <Linkedin className="h-4 w-4 flex-shrink-0" />
+                <a
+                  href="https://www.linkedin.com/company/mirzo-ulugh-beg-s-legacy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  Mirzo Ulugh Beg&apos;s Legacy
                 </a>
               </li>
             </ul>
