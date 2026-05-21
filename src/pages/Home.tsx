@@ -134,7 +134,7 @@ export default function Home() {
           <HeroSection9
             title={
               <>
-                Are you Engineer? <span className="text-primary">Prove it!</span>
+                Are you an Engineer? <span className="text-primary">Prove it!</span>
               </>
             }
             subtitle="From competition hardware to applied research, MUBL gives students a place to turn technical ambition into real systems, public results, and a sharper engineering mindset."
