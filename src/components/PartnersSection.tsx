@@ -7,7 +7,13 @@ const partners = [
     logoLight: "/Partners/uzcosmos-logo_blue.png",
     logoDark: "/Partners/uzcosmos-logo_white.png",
   },
-  { name: "PIIMA", logo: "/Partners/ptma.svg" },
+  {
+    name: "PIIMA",
+    logoLight: "/Partners/ptma.png",
+    logoDark: "/Partners/ptma.svg",
+    blendLight: true,
+    invertDark: true,
+  },
 ];
 
 // Repeat the set so the track stays wider than the viewport and the -50%
@@ -36,13 +42,13 @@ export function PartnersSection() {
                     src={partner.logoLight}
                     alt={partner.name}
                     loading="lazy"
-                    className="h-12 w-auto max-w-[160px] object-contain opacity-80 transition-opacity duration-300 hover:opacity-100 dark:hidden"
+                    className={`h-[72px] w-auto max-w-[240px] object-contain opacity-80 transition-opacity duration-300 hover:opacity-100 dark:hidden${"blendLight" in partner && partner.blendLight ? " mix-blend-multiply" : ""}`}
                   />
                   <img
                     src={partner.logoDark}
                     alt={partner.name}
                     loading="lazy"
-                    className="hidden h-12 w-auto max-w-[160px] object-contain opacity-80 transition-opacity duration-300 hover:opacity-100 dark:block dark:opacity-60 dark:hover:opacity-100"
+                    className={`hidden h-[72px] w-auto max-w-[240px] object-contain opacity-80 transition-opacity duration-300 hover:opacity-100 dark:block dark:opacity-60 dark:hover:opacity-100${"invertDark" in partner && partner.invertDark ? " dark:brightness-0 dark:invert" : ""}`}
                   />
                 </>
               ) : (
@@ -50,7 +56,7 @@ export function PartnersSection() {
                   src={partner.logo}
                   alt={partner.name}
                   loading="lazy"
-                  className="h-12 w-auto max-w-[160px] object-contain opacity-80 mix-blend-multiply transition-opacity duration-300 hover:opacity-100 dark:mix-blend-normal dark:brightness-0 dark:invert dark:opacity-60 dark:hover:opacity-100"
+                  className="h-[72px] w-auto max-w-[240px] object-contain opacity-80 mix-blend-multiply transition-opacity duration-300 hover:opacity-100 dark:mix-blend-normal dark:brightness-0 dark:invert dark:opacity-60 dark:hover:opacity-100"
                 />
               )}
             </div>

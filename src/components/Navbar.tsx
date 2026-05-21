@@ -42,11 +42,10 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-xl">
-        <div className="container px-4">
-          <div className="flex h-16 items-center justify-between md:h-20">
+      <nav className="fixed inset-x-0 top-4 z-50 px-4">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-border/80 bg-background/80 px-5 shadow-[0_10px_40px_rgba(2,6,23,0.18)] backdrop-blur-xl md:px-6">
             <Link to="/" className="flex items-center">
-              <img src={logoSrc} alt="MUBL Logo" className="h-10 w-auto rounded-full" />
+              <img src={logoSrc} alt="MUBL Logo" className="h-10 w-auto rounded-full dark:h-[53px]" />
             </Link>
 
             <div className="hidden items-center gap-1 lg:flex">
@@ -92,7 +91,6 @@ export function Navbar() {
               </button>
             </div>
           </div>
-        </div>
       </nav>
 
       {/* Mobile menu overlay + slide-in panel */}

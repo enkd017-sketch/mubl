@@ -109,7 +109,15 @@ export function Footer() {
             © {new Date().getFullYear()} MUBL Club. All rights reserved.
           </p>
           <p className="text-sm text-slate-500">
-            Research. Build. Publish. Lead.
+            Developed by{" "}
+            <a
+              href="https://enkd.uz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-slate-400 transition-colors hover:text-white"
+            >
+              enkd.uz
+            </a>
           </p>
         </div>
       </div>

@@ -220,9 +220,23 @@ export default function ParticleEffectForHero({
         context.fill();
       }
 
-      if (!mediaQuery.matches) {
+      if (!mediaQuery.matches && !paused) {
         frameIdRef.current = window.requestAnimationFrame(render);
       }
+    };
+
+    let paused = false;
+    let inView = true;
+
+    const pause = () => {
+      paused = true;
+      cancelAnimationFrame(frameIdRef.current ?? 0);
+    };
+
+    const resume = () => {
+      if (!paused || mediaQuery.matches || !inView || document.hidden) return;
+      paused = false;
+      frameIdRef.current = window.requestAnimationFrame(render);
     };
 
     const handlePointerMove = (event: MouseEvent) => {
@@ -246,13 +260,30 @@ export default function ParticleEffectForHero({
       }
     });
 
+    // Pause the loop while the hero is offscreen or the tab is hidden.
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        inView ? resume() : pause();
+      },
+      { threshold: 0 },
+    );
+
+    const handleVisibility = () => {
+      document.hidden ? pause() : resume();
+    };
+
     resizeObserver.observe(container);
+    intersectionObserver.observe(container);
+    document.addEventListener("visibilitychange", handleVisibility);
     start();
     window.addEventListener("mousemove", handlePointerMove, { passive: true });
     window.addEventListener("mouseleave", handlePointerLeave);
 
     return () => {
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("mousemove", handlePointerMove);
       window.removeEventListener("mouseleave", handlePointerLeave);
       cancelAnimationFrame(frameIdRef.current ?? 0);

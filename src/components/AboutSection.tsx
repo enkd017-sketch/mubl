@@ -1,23 +1,23 @@
-import { Globe, Heart, Lightbulb, Target, Users } from "lucide-react";
+import { GraduationCap, Handshake, Sparkles, Telescope, Wrench } from "lucide-react";
 
 const coreValues = [
   {
-    icon: Target,
+    icon: Wrench,
     title: "Hands-on Engineering",
     description: "Move from theory to real engineering by working on projects that address real-world problems.",
   },
   {
-    icon: Lightbulb,
+    icon: Sparkles,
     title: "Innovation",
     description: "Push boundaries and explore new solutions using modern tools, fast prototyping, and open-ended experimentation.",
   },
   {
-    icon: Users,
+    icon: Handshake,
     title: "Collaboration",
     description: "Work in multidisciplinary teams where software, hardware, design, and research move together.",
   },
   {
-    icon: Heart,
+    icon: GraduationCap,
     title: "Mentorship",
     description: "Learn from national and international experts who help students grow into confident builders.",
   },
@@ -30,7 +30,6 @@ export function AboutSection() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.08),transparent_28%)]" />
         <div className="relative space-y-12">
           <div className="max-w-3xl space-y-5">
-            <div className="eyebrow">About MUBL</div>
             <h2 className="section-title">
               Why <span className="text-primary">MUBL</span> exists
             </h2>
@@ -40,7 +39,7 @@ export function AboutSection() {
             <div className="glass-panel p-6 md:p-8">
               <div className="mb-6 flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
-                  <Globe className="h-6 w-6" />
+                  <Telescope className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold text-[color:var(--title-color)]">Our Mission</h3>

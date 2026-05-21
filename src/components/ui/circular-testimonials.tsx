@@ -37,6 +37,8 @@ interface CircularTestimonialsProps {
   autoplay?: boolean;
   colors?: Colors;
   fontSizes?: FontSizes;
+  /** When true, the info column is on the left and images on the right (desktop). */
+  reverse?: boolean;
 }
 
 function calculateGap(width: number) {
@@ -55,6 +57,7 @@ export const CircularTestimonials = ({
   autoplay = true,
   colors = {},
   fontSizes = {},
+  reverse = false,
 }: CircularTestimonialsProps) => {
   const colorName = colors.name ?? "#000";
   const colorDesignation = colors.designation ?? "#6b7280";
@@ -172,7 +175,7 @@ export const CircularTestimonials = ({
 
   return (
     <div className="mubl-ct-container">
-      <div className="mubl-ct-grid">
+      <div className={`mubl-ct-grid${reverse ? " mubl-ct-grid--reverse" : ""}`}>
         <div className="mubl-ct-image-container" ref={imageContainerRef}>
           {testimonials.map((testimonial, index) => (
             <img
@@ -181,6 +184,8 @@ export const CircularTestimonials = ({
               alt={testimonial.name}
               className="mubl-ct-image"
               data-index={index}
+              loading={index === activeIndex ? "eager" : "lazy"}
+              decoding="async"
               style={getImageStyle(index)}
             />
           ))}
@@ -325,6 +330,12 @@ export const CircularTestimonials = ({
         @media (min-width: 768px) {
           .mubl-ct-grid {
             grid-template-columns: 1fr 1fr;
+          }
+          .mubl-ct-grid--reverse .mubl-ct-image-container {
+            order: 2;
+          }
+          .mubl-ct-grid--reverse .mubl-ct-content {
+            order: 1;
           }
           .mubl-ct-arrows {
             padding-top: 0;

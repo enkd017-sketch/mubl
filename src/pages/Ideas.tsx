@@ -26,42 +26,47 @@ export default function Ideas() {
               <AnimatedShaderHeroBackground className="opacity-95" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.16),transparent_26%),linear-gradient(180deg,rgba(2,6,23,0.14),rgba(2,6,23,0.42))]" />
 
-              <div className="relative z-10 mb-14 max-w-4xl">
-                <div className="eyebrow border-blue-300/20 bg-blue-500/10 text-blue-100/80">
-                  <Lightbulb className="h-4 w-4" />
-                  Submit Your Idea
+              <div className="relative z-10 grid items-start gap-10 lg:grid-cols-2">
+                {/* Left: the pitch */}
+                <div className="max-w-2xl">
+                  <div className="eyebrow border-blue-300/20 bg-blue-500/10 !text-white">
+                    <Lightbulb className="h-4 w-4" />
+                    Submit Your Idea
+                  </div>
+                  <h1 className="page-title mt-5 !text-white">
+                    Have a project idea? <span className="text-primary">Let&apos;s build it together.</span>
+                  </h1>
+                  <p className="mt-5 text-base leading-7 text-slate-300 md:text-lg">
+                    You do not need a finished plan or a complete team. Bring the raw idea and the club will help shape it into a real engineering path.
+                  </p>
+                  <div className="mt-8 space-y-3">
+                    {highlights.map((h, i) => (
+                      <div key={i} className="flex items-center gap-3 text-slate-100">
+                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="text-lg">{h}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <h1 className="page-title mt-5 text-[color:var(--title-color)]">
-                  Have a project idea? <span className="text-primary">Let&apos;s build it together.</span>
-                </h1>
-                <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
-                  You do not need a finished plan or a complete team. Bring the raw idea and the club will help shape it into a real engineering path.
-                </p>
+
+                {/* Right: benefits stacked in 1 column, 3 rows */}
+                <div className="grid grid-cols-1 gap-4">
+                  {benefits.map((b, i) => (
+                    <div key={i} className="max-w-md rounded-2xl border border-white/8 bg-white/[0.04] p-4 shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-300">
+                          <b.icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <h3 className="text-base font-semibold text-white">{b.title}</h3>
+                      </div>
+                      <p className="mt-2 text-sm text-slate-300/85">{b.description}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="relative z-10 mb-12 space-y-3">
-              {highlights.map((h, i) => (
-                <div key={i} className="flex items-center gap-3 text-[color:var(--title-color)]">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span className="text-lg">{h}</span>
-                </div>
-              ))}
-            </div>
-
-              <div className="relative z-10 mb-12 grid grid-cols-1 gap-6 xl:grid-cols-3">
-              {benefits.map((b, i) => (
-                <div key={i} className="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-6 shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-300">
-                    <b.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-semibold text-[color:var(--title-color)]">{b.title}</h3>
-                  <p className="text-sm text-slate-300/85">{b.description}</p>
-                </div>
-              ))}
-            </div>
-
-              <div className="relative z-10 rounded-[1.75rem] border border-white/8 bg-white/[0.04] p-8 text-center shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md md:p-12">
-                <h2 className="text-2xl font-semibold text-[color:var(--title-color)] md:text-3xl">Submit your project idea</h2>
+              <div className="relative z-10 mt-12 rounded-[1.75rem] border border-white/8 bg-white/[0.04] p-8 text-center shadow-[0_18px_42px_rgba(2,6,23,0.22)] backdrop-blur-md md:p-12">
+                <h2 className="text-2xl font-semibold text-blue-200 md:text-3xl">Submit your project idea</h2>
                 <p className="mx-auto mb-8 mt-4 max-w-xl text-slate-300">Let&apos;s turn your idea into something real together.</p>
                 <Button size="lg" className="rounded-full bg-primary px-8 hover:bg-primary/90" asChild>
                   <a href="https://forms.gle/Ts7cKwWE5yxNi4zt9" target="_blank" rel="noopener noreferrer">

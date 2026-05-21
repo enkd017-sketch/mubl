@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { Suspense, lazy, useCallback, useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,18 +8,19 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteLoader } from "@/components/SiteLoader";
 import { AnimatePresence } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
-import Home from "./pages/Home";
-import Projects from "./pages/Projects";
-import Highlights from "./pages/Highlights";
-import Programs from "./pages/Programs";
-import Resources from "./pages/Resources";
-import Ideas from "./pages/Ideas";
 
-import Join from "./pages/Join";
-import Partner from "./pages/Partner";
-import PartnerApply from "./pages/PartnerApply";
-import Articles from "./pages/Articles";
-import NotFound from "./pages/NotFound";
+// Each page is its own lazily-loaded chunk so the initial bundle stays small.
+const Home = lazy(() => import("./pages/Home"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Highlights = lazy(() => import("./pages/Highlights"));
+const Programs = lazy(() => import("./pages/Programs"));
+const Resources = lazy(() => import("./pages/Resources"));
+const Ideas = lazy(() => import("./pages/Ideas"));
+const Join = lazy(() => import("./pages/Join"));
+const Partner = lazy(() => import("./pages/Partner"));
+const PartnerApply = lazy(() => import("./pages/PartnerApply"));
+const Articles = lazy(() => import("./pages/Articles"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ function AnimatedRoutes() {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
+      <Suspense fallback={null}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
@@ -42,6 +44,7 @@ function AnimatedRoutes() {
         <Route path="/articles" element={<PageTransition><Articles /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
+      </Suspense>
     </AnimatePresence>
   );
 }

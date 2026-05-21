@@ -4,9 +4,9 @@ import { Layout } from "@/components/Layout";
 import { CircularTestimonials } from "@/components/ui/circular-testimonials";
 import { ImageAutoSlider } from "@/components/ui/image-auto-slider";
 
-import teknofest2025 from "@/assets/showcase/teknofest-2025.png";
-import uzcansat2025 from "@/assets/showcase/uzcansat-2025.png";
-import youngLeaders2025 from "@/assets/showcase/young-leaders-2025.png";
+import teknofest2025 from "@/assets/showcase/teknofest-2025.jpg";
+import uzcansat2025 from "@/assets/showcase/uzcansat-2025.jpg";
+import youngLeaders2025 from "@/assets/showcase/young-leaders-2025.jpg";
 
 import roboticsImage from "@/assets/events/robotics.jpg";
 import roboticsAiImage from "@/assets/events/robotics&ai.jpg";
@@ -210,17 +210,17 @@ const galleryPastEvents = [
 type Colors = Parameters<typeof CircularTestimonials>[0]["colors"];
 
 function HighlightSection({
-  eyebrow,
   title,
   highlightWord,
   testimonials,
   colors,
+  reverse = false,
 }: {
-  eyebrow: string;
   title: string;
   highlightWord?: string;
   testimonials: Testimonial[];
   colors: Colors;
+  reverse?: boolean;
 }) {
   const renderTitle = () => {
     if (!highlightWord) return title;
@@ -238,14 +238,14 @@ function HighlightSection({
   return (
     <section className="mt-14">
       <div className="mb-6 max-w-3xl">
-        <div className="eyebrow">{eyebrow}</div>
-        <h2 className="section-title mt-4">{renderTitle()}</h2>
+        <h2 className="section-title">{renderTitle()}</h2>
       </div>
       <div className="glass-panel p-4 md:p-8">
         <CircularTestimonials
           testimonials={testimonials}
           autoplay
           colors={colors}
+          reverse={reverse}
           fontSizes={{
             name: "1.75rem",
             designation: "1rem",
@@ -300,7 +300,6 @@ export default function Highlights() {
             </div>
 
             <HighlightSection
-              eyebrow="SpaceFest 2025 · Organizer"
               title="Space Fest 2025"
               highlightWord="Fest"
               testimonials={spacefestTestimonials}
@@ -308,15 +307,14 @@ export default function Highlights() {
             />
 
             <HighlightSection
-              eyebrow="Cosmonautics Day · Organizer"
               title="Cosmonautics Day"
               highlightWord="Cosmonautics"
               testimonials={cosmonauticsTestimonials}
               colors={carouselColors}
+              reverse
             />
 
             <HighlightSection
-              eyebrow="Teknofest 2025 · 4th Place"
               title="Teknofest 2025"
               highlightWord="Teknofest"
               testimonials={teknofestTestimonials}
@@ -324,15 +322,14 @@ export default function Highlights() {
             />
 
             <HighlightSection
-              eyebrow="UzCanSat 2025 · 1st Place"
               title="UzCanSat 2025"
               highlightWord="UzCanSat"
               testimonials={uzcansatTestimonials}
               colors={carouselColors}
+              reverse
             />
 
             <HighlightSection
-              eyebrow="Young Leaders 2025 · Finalists"
               title="Young Leaders 2025"
               highlightWord="Leaders"
               testimonials={youngLeadersTestimonials}

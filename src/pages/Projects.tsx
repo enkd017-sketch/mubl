@@ -15,7 +15,7 @@ export default function Projects() {
             <NeuralBackground
               className="absolute inset-0 opacity-95"
               color="#7dd3fc"
-              particleCount={760}
+              particleCount={260}
               trailOpacity={0.1}
               speed={0.78}
             />

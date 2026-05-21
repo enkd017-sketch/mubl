@@ -134,7 +134,7 @@ export default function Home() {
           <HeroSection9
             title={
               <>
-                Join <span className="text-primary">MUBL</span> in building the next generation of engineering work.
+                Are you Engineer? <span className="text-primary">Prove it!</span>
               </>
             }
             subtitle="From competition hardware to applied research, MUBL gives students a place to turn technical ambition into real systems, public results, and a sharper engineering mindset."
@@ -171,7 +171,7 @@ export default function Home() {
               >
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-blue-200/70">
+                    <p className="text-xs uppercase tracking-[0.22em] text-blue-700 dark:text-blue-200/70">
                       Explore
                     </p>
                     <h2 className="mt-3 text-xl font-semibold text-[color:var(--title-color)]">
@@ -301,6 +301,7 @@ export default function Home() {
                     src="/Programs/Bootcamp/1.JPG"
                     alt="MUBL Bootcamp closing ceremony."
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>
@@ -316,6 +317,7 @@ export default function Home() {
                     src="/Programs/Bootcamp/2.JPG"
                     alt="MUBL Bootcamp prototype presentations."
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>
@@ -330,6 +332,7 @@ export default function Home() {
                     src="/Programs/Bootcamp/3.JPG"
                     alt="MUBL Bootcamp jury and guests."
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>

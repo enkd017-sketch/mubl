@@ -92,6 +92,8 @@ export function ImageCursorTrail({
           data-status="inactive"
           src={item}
           alt={`image-${index}`}
+          loading="lazy"
+          decoding="async"
           ref={refs.current[index]}
         />
       ))}

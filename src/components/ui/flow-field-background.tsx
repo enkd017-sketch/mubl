@@ -128,6 +128,9 @@ export default function NeuralBackground({
       }
     };
 
+    let running = false;
+    let inView = true;
+
     const animate = () => {
       ctx.globalAlpha = 1;
       ctx.fillStyle = `rgba(0, 0, 0, ${trailOpacity})`;
@@ -141,6 +144,32 @@ export default function NeuralBackground({
       ctx.globalAlpha = 1;
       animationFrameId = window.requestAnimationFrame(animate);
     };
+
+    const start = () => {
+      if (running || !inView || document.hidden) return;
+      running = true;
+      animationFrameId = window.requestAnimationFrame(animate);
+    };
+
+    const stop = () => {
+      running = false;
+      window.cancelAnimationFrame(animationFrameId);
+    };
+
+    // Only animate while the canvas is on screen and the tab is visible.
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        inView ? start() : stop();
+      },
+      { threshold: 0 },
+    );
+    intersectionObserver.observe(container);
+
+    const handleVisibility = () => {
+      document.hidden ? stop() : start();
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
 
     const handleResize = () => {
       init();
@@ -161,7 +190,7 @@ export default function NeuralBackground({
     observer.observe(container);
 
     init();
-    animate();
+    start();
 
     window.addEventListener("resize", handleResize);
     container.addEventListener("mousemove", handleMouseMove);
@@ -169,6 +198,8 @@ export default function NeuralBackground({
 
     return () => {
       observer.disconnect();
+      intersectionObserver.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("resize", handleResize);
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseleave", handleMouseLeave);
